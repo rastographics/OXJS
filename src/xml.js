@@ -90,12 +90,14 @@ OX.XML.Element = OX.Base.extend(/** @lends OX.XML.Element# */{
 
     if (this.attributes) {
       for (var name in this.attributes) {
-        var val = this.attributes[name];
-        if (!val) {
-          continue;
-        }
+        if (this.attributes.hasOwnProperty(name)) {
+          var val = this.attributes[name];
+          if (!val) {
+            continue;
+          }
 
-        attrs.push(name + '="' + this.escapeXML(val.toString()) + '"');
+          attrs.push(name + '="' + this.escapeXML(val.toString()) + '"');
+        }
       }
     }
 
