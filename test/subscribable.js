@@ -959,24 +959,6 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                    'Did not get pending event trying to subscribe.');
   },
 
-  testFiresPendingWithEvent: function () {
-    var Assert = YAHOO.util.Assert;
-
-    var packet = OXTest.Packet.extendWithXML('<message from="pubsub@example.com" to="mock@example.com"><event xmlns="http://jabber.org/protocol/pubsub#event"><subscription node="/" jid="mock@example.com" subscription="pending"/></event></message>');
-
-    var pendingFlag = false;
-    this.Subscribable.registerHandler('onPending', function (uri) {
-      pendingFlag = true;
-      Assert.areSame('xmpp:pubsub@example.com?;node=/', uri.toString(),
-                     'Requested URI for pending is wrong.');
-    });
-    this.Subscribable.subscribe('/');
-
-    this.conn.fireEvent('message', packet);
-    Assert.areSame(true, pendingFlag,
-                   'Did not get pending event trying to subscribe.');
-  },
-
   testFiresSubscribedWithEvent: function () {
     var Assert = YAHOO.util.Assert;
 
