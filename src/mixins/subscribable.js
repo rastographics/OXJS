@@ -584,6 +584,18 @@ OX.Mixin.Subscribable = (function () {
             for (var i = 0, len = subs.length; i < len; i++) {
               if (subs[i].subscription === 'subscribed') {
                 subs[i].node = finalURI.queryParam('node'); // Node is not set when specifying a node.
+
+                // make sure our registered handlers get fired on resubscription
+                var tmp = callbacks.onSuccess;
+                callbacks.onSuccess = function (cb, packet) {
+                  return function (origURI, finalURI, packet) {
+                    if (cb) cb(origURI, finalURI, packet);
+                    if (that._subscriptionHandlers.onSubscribed) {
+                      that._subscriptionHandlers.onSubscribed(finalURI, packet);
+                    }
+                  };
+                }(tmp,packet);
+
                 that.configureNodeSubscription(subs[i], subOptions, callbacks, {
                   origURI: requestedURI
                 });

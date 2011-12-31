@@ -241,7 +241,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
 
   testGetSubscriptionsWithoutStrictJIDCheck: function() {
     /** start this test setup **/
-    var resourceConn = OXTest.ConnectionMock.extend({jid: function() { return 'mock@example.com/brooklyn'; }}).init();
+    var resourceConn = OXTest.ConnectionMock.extend({jid: function() { return 'mock@example.com/brooklyn'; }}).init(),
         resourceOx = OX.Connection.extend({connectionAdapter: resourceConn});
 
     var itemFromElement = function () {
@@ -290,7 +290,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
 
   testGetSubscriptionsWithStrictJIDCheck: function() {
     /** start this test setup **/
-    var resourceConn = OXTest.ConnectionMock.extend({jid: function() { return 'mock@example.com/brooklyn'; }}).init();
+    var resourceConn = OXTest.ConnectionMock.extend({jid: function() { return 'mock@example.com/brooklyn'; }}).init(),
         resourceOx = OX.Connection.extend({connectionAdapter: resourceConn});
 
     var itemFromElement = function () {
@@ -521,6 +521,10 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
   testSubscribeWithReuseSubscription: function () {
     var Assert = YAHOO.util.Assert;
 
+
+    // client -> server: request subscriptions
+
+    // server -> client: subscriptions response
     this.conn.addResponse(OXTest.Packet.extendWithXML(
       "<iq type='result'\
            from='pubsub@example.com'\
@@ -533,18 +537,11 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
         </pubsub>\
       </iq>"));
 
-    this.conn.addResponse(OXTest.Packet.extendWithXML(
-      '<iq from="pubsub@example.com"\
-           to="mock@example.com"\
-           id="test"\
-           type="result">\
-         <pubsub xmlns="http://jabber.org/protocol/pubsub">\
-           <subscription node="princely_musings"\
-                         jid="mock@example.com"\
-                         subscription="subscribed"/>\
-         </pubsub>\
-       </iq>'));
+    // client -> server: configure subscription
 
+    // server -> client: configure subscription response
+    this.conn.addResponse(OXTest.Packet.extendWithXML(
+      '<iq type="result" to="mock@example.com" from="pubsub@example.com" id="test"/>'));
 
     var win = false, fail = false;
     var options = { expire: new Date(2009, 5, 8, 1, 20, 10, 708),
@@ -564,6 +561,8 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
         fail = true;
       }
     }, { reuseSubscriptions: true });
+
+    Assert.isConfigure(this.conn._data, 'pubsub@example.com', 'princely_musings', 'mock@example.com', 'abc', options);
 
     Assert.isTrue(win);
     Assert.isFalse(fail);
@@ -588,17 +587,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
       </iq>"));
 
     this.conn.addResponse(OXTest.Packet.extendWithXML(
-      '<iq from="pubsub@example.com"\
-           to="mock@example.com"\
-           id="test"\
-           type="result">\
-         <pubsub xmlns="http://jabber.org/protocol/pubsub">\
-           <subscription node="princely_musings"\
-                         jid="mock@example.com"\
-                         subscription="subscribed"/>\
-         </pubsub>\
-       </iq>'));
-
+      '<iq type="result" to="mock@example.com" from="pubsub@example.com" id="test"/>'));
 
     var win = false, fail = false;
     var options = { expire: new Date(2009, 5, 8, 1, 20, 10, 708),
@@ -652,17 +641,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
       </iq>"));
 
     this.conn.addResponse(OXTest.Packet.extendWithXML(
-      '<iq from="pubsub@example.com"\
-           to="mock@example.com"\
-           id="test"\
-           type="result">\
-         <pubsub xmlns="http://jabber.org/protocol/pubsub">\
-           <subscription node="other-node"\
-                         jid="mock@example.com"\
-                         subscription="subscribed"/>\
-         </pubsub>\
-       </iq>'));
-
+      '<iq type="result" to="mock@example.com" from="pubsub@example.com" id="test"/>'));
 
     var win = false, fail = false;
     var options = { expire: new Date(2009, 5, 8, 1, 20, 10, 708),
@@ -681,6 +660,8 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
         fail = true;
       }
     }, { reuseSubscriptions: true });
+
+    Assert.isConfigure(this.conn._data, 'pubsub@example.com', 'other-node', 'mock@example.com', 'abc', options);
 
     Assert.isTrue(win);
     Assert.isFalse(fail);
@@ -705,17 +686,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
       </iq>"));
 
     this.conn.addResponse(OXTest.Packet.extendWithXML(
-      '<iq from="pubsub@example.com"\
-           to="mock@example.com"\
-           id="test"\
-           type="result">\
-         <pubsub xmlns="http://jabber.org/protocol/pubsub">\
-           <subscription node="princely_musings"\
-                         jid="mock@example.com"\
-                         subscription="subscribed"/>\
-         </pubsub>\
-       </iq>'));
-
+      '<iq type="result" to="mock@example.com" from="pubsub@example.com" id="test"/>'));
 
     var win = false, fail = false;
     var options = { expire: new Date(2009, 5, 8, 1, 20, 10, 708),
@@ -988,6 +959,24 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                    'Did not get pending event trying to subscribe.');
   },
 
+  testFiresPendingWithEvent: function () {
+    var Assert = YAHOO.util.Assert;
+
+    var packet = OXTest.Packet.extendWithXML('<message from="pubsub@example.com" to="mock@example.com"><event xmlns="http://jabber.org/protocol/pubsub#event"><subscription node="/" jid="mock@example.com" subscription="pending"/></event></message>');
+
+    var pendingFlag = false;
+    this.Subscribable.registerHandler('onPending', function (uri) {
+      pendingFlag = true;
+      Assert.areSame('xmpp:pubsub@example.com?;node=/', uri.toString(),
+                     'Requested URI for pending is wrong.');
+    });
+    this.Subscribable.subscribe('/');
+
+    this.conn.fireEvent('message', packet);
+    Assert.areSame(true, pendingFlag,
+                   'Did not get pending event trying to subscribe.');
+  },
+
   testFiresSubscribedWithEvent: function () {
     var Assert = YAHOO.util.Assert;
 
@@ -1107,6 +1096,36 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
     this.Subscribable.subscribe('/');
     Assert.areSame(true, subscribedFlag,
                    'Was not subscribed trying to subscribe.');
+  },
+
+  testFiresSubscribedWithReuseSubscriptions: function () {
+    var Assert = YAHOO.util.Assert;
+
+    var subscribedFlag = false;
+    this.Subscribable.registerHandler('onSubscribed', function () {
+      subscribedFlag = true;
+    });
+
+    this.conn.addResponse(OXTest.Packet.extendWithXML(
+      "<iq type='result'\
+           from='pubsub@example.com'\
+           to='mock@example.com'\
+           id='subscriptions1'>\
+        <pubsub xmlns='http://jabber.org/protocol/pubsub'>\
+          <subscriptions>\
+            <subscription node='/' jid='mock@example.com' subscription='subscribed' subid='abc'/>\
+          </subscriptions>\
+        </pubsub>\
+      </iq>"));
+
+    this.conn.addResponse(OXTest.Packet.extendWithXML(
+      '<iq type="result" to="mock@example.com" from="pubsub@example.com" id="test"/>'));
+
+    this.Subscribable.subscribe('/', {}, {}, { reuseSubscriptions: true });
+
+    Assert.isConfigure(this.conn._data, 'pubsub@example.com', '/', 'mock@example.com', 'abc', {});
+    Assert.areSame(true, subscribedFlag,
+                   'Subscribe handler was not fired on reuse.');
   },
 
   testFiresUnsubscribedWithIQ: function () {
