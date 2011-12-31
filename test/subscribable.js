@@ -354,9 +354,12 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
     var sub = { node: '/', jid: 'mock@example.com', subid: 'abc-123', subscription: 'subscribed' },
         options = { expire: new Date(3009, 0, 1, 12, 0, 0), subscription_depth: 'all', subscription_type: 'items' },
         callbacks = {
-          onSuccess: function(packet) {
+          onSuccess: function(requestURI, finalURI, packet, subscription) {
             successFlag = true;
             Assert.isObject(packet, 'packet is not an object');
+            Assert.areSame(sub, subscription, 'subscription info is incorrect');
+            Assert.areEqual('/',requestURI.queryParam('node'),'requestURI has wrong node');
+            Assert.areEqual('/',finalURI.queryParam('node'),'requestURI has wrong node');
           },
           onError: function(packet) {
             errorFlag = true;
@@ -549,12 +552,12 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                     subscription_type: 'items' };
 
     this.Subscribable.subscribe('princely_musings', options, {
-      onSuccess: function (origURI, finalURI, packet) {
+      onSuccess: function (origURI, finalURI, packet, subscription) {
         Assert.areEqual(origURI.queryParam('node'), 'princely_musings',
                         'princely_musings is orig node');
         Assert.areEqual(finalURI.queryParam('node'), 'princely_musings',
                         'princely_musings is final node');
-        Assert.areEqual(arguments.length, 3, 'arguments.length should be 3');
+        Assert.areEqual(arguments.length, 4, 'arguments.length should be 4');
         win = true;
       },
       onError: function () {
@@ -595,12 +598,11 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                     subscription_type: 'items' };
 
     this.Subscribable.subscribe('princely_musings', options, {
-      onSuccess: function (origURI, finalURI, packet) {
+      onSuccess: function (origURI, finalURI, packet, subscriptions) {
         Assert.areEqual(origURI.queryParam('node'), 'princely_musings',
                         'princely_musings is orig node');
         Assert.areEqual(finalURI.queryParam('node'), 'princely_musings',
                         'princely_musings is final node');
-        Assert.areEqual(arguments.length, 3, 'arguments.length should be 3');
         win = true;
       },
       onError: function () {
@@ -648,12 +650,11 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                     subscription_depth: 'all',
                     subscription_type: 'items' };
     this.Subscribable.subscribe('/', options, {
-      onSuccess: function (origURI, finalURI, packet) {
+      onSuccess: function (origURI, finalURI, packet, subscriptions) {
         Assert.areEqual('/', origURI.queryParam('node'),
                         '/ is orig node');
         Assert.areEqual('other-node', finalURI.queryParam('node'),
                         'other-node is final node');
-        Assert.areEqual(arguments.length, 3, 'arguments.length should be 3');
         win = true;
       },
       onError: function () {
@@ -694,12 +695,11 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                     subscription_type: 'items' };
 
     this.Subscribable.subscribe('princely_musings', options, {
-      onSuccess: function (origURI, finalURI) {
+      onSuccess: function (origURI, finalURI, packet, subscriptions) {
         Assert.areEqual(origURI.queryParam('node'), 'princely_musings',
                         'princely_musings is orig node');
         Assert.areEqual(finalURI.queryParam('node'), 'princely_musings',
                         'princely_musings is final node');
-        Assert.areEqual(arguments.length, 3, 'arguments.length should be 3');
         win = true;
       },
       onError: function () {
@@ -749,7 +749,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                     subscription_type: 'items' };
 
     this.Subscribable.subscribe('princely_musings', options, {
-      onSuccess: function (origURI, finalURI) {
+      onSuccess: function (origURI, finalURI, packet) {
         Assert.areEqual(origURI.queryParam('node'), 'princely_musings',
                         'princely_musings is orig node');
         Assert.areEqual(finalURI.queryParam('node'), 'princely_musings',
@@ -1080,12 +1080,43 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
                    'Was not subscribed trying to subscribe.');
   },
 
-  testFiresSubscribedWithReuseSubscriptions: function () {
+  testFiresConfigured: function() {
     var Assert = YAHOO.util.Assert;
 
-    var subscribedFlag = false;
-    this.Subscribable.registerHandler('onSubscribed', function () {
-      subscribedFlag = true;
+    var configuredFlag = false;
+    this.Subscribable.registerHandler('onConfigure', function () {
+      configuredFlag = true;
+    });
+
+    var successFlag = false;
+    this.conn.addResponse(OXTest.Packet.extendWithXML(
+                          "<iq type='result'"
+                          + "    from='pubsub@example.com'"
+                          + "    to='mock@example.com'"
+                          + "    id='options2'/>"));
+
+    var sub = { node: '/configured', jid: 'mock@example.com', subid: 'abc-123', subscription: 'subscribed' },
+        options = { expire: new Date(3009, 0, 1, 12, 0, 0), subscription_depth: 'all', subscription_type: 'items' },
+        callbacks = {
+          onSuccess: function(packet) {
+            successFlag = true;
+          }
+        };
+
+    this.Subscribable.configureNodeSubscription(sub, options, callbacks);
+
+    Assert.isConfigure(this.conn._data, 'pubsub@example.com', '/configured', 'mock@example.com', 'abc-123', options);
+
+    Assert.isTrue(successFlag, 'sucess handler was not called');
+    Assert.isTrue(configuredFlag, 'onConfigure handler was not called');
+  },
+
+  testFiresConfiguredWithReuseSubscriptions: function () {
+    var Assert = YAHOO.util.Assert;
+
+    var configuredFlag = false;
+    this.Subscribable.registerHandler('onConfigure', function () {
+      configuredFlag = true;
     });
 
     this.conn.addResponse(OXTest.Packet.extendWithXML(
@@ -1095,7 +1126,7 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
            id='subscriptions1'>\
         <pubsub xmlns='http://jabber.org/protocol/pubsub'>\
           <subscriptions>\
-            <subscription node='/' jid='mock@example.com' subscription='subscribed' subid='abc'/>\
+            <subscription node='/on-configure' jid='mock@example.com' subscription='subscribed' subid='abc'/>\
           </subscriptions>\
         </pubsub>\
       </iq>"));
@@ -1103,11 +1134,11 @@ OXTest.Subscribable = new YAHOO.tool.TestCase({
     this.conn.addResponse(OXTest.Packet.extendWithXML(
       '<iq type="result" to="mock@example.com" from="pubsub@example.com" id="test"/>'));
 
-    this.Subscribable.subscribe('/', {}, {}, { reuseSubscriptions: true });
+    this.Subscribable.subscribe('/on-configure', {}, {}, { reuseSubscriptions: true });
 
-    Assert.isConfigure(this.conn._data, 'pubsub@example.com', '/', 'mock@example.com', 'abc', {});
-    Assert.areSame(true, subscribedFlag,
-                   'Subscribe handler was not fired on reuse.');
+    Assert.isConfigure(this.conn._data, 'pubsub@example.com', '/on-configure', 'mock@example.com', 'abc', {});
+    Assert.areSame(true, configuredFlag,
+                   'Configure handler was not fired on subscription reuse.');
   },
 
   testFiresUnsubscribedWithIQ: function () {

@@ -231,8 +231,17 @@ OX.Mixin.Subscribable = (function () {
     callbacks = OX.Base.mixin.call(callbacks, cbDefault);
 
     pubSubPacketHandler({
+      /**
+       * onConfigure handlers are useful when you're reusing
+       * subscriptions and want a notification that you were
+       * subscribed, without needing to bastardize your
+       * subscribe.onSuccess callback
+       */
       result: function (packet, node, options) {
-        callbacks.onSuccess(options.origURI, options.finalURI, packet);
+        callbacks.onSuccess(options.origURI, options.finalURI, packet, subscription);
+        if (this._subscriptionHandlers.onConfigure) {
+          this._subscriptionHandlers.onConfigure(options.finalURI, packet, subscription);
+        }
       },
       redirect: function (packet, node, options) {
         subOptions.node = node;
@@ -533,10 +542,12 @@ OX.Mixin.Subscribable = (function () {
      *     @param {OX.URI} [callbacks.onSuccess.requestedURI] The URI you requested.
      *     @param {OX.URI} [callbacks.onSuccess.finalURI] The redirected URI that your requested URI maps to.
      *     @param {OX.PacketAdapter} [callbacks.onSuccess.packet] The packet of the returned subscription.
+     *     @param {OX.Subscription} [callbacks.onSuccess.subscription] The original subscription hash
      *   @param {Function} [callbacks.onError] The error callback.
      *     @param {OX.URI} [callbacks.onError.requestedURI] The URI you requested.
      *     @param {OX.URI} [callbacks.onError.finalURI] The redirected URI that your requested URI maps to.
      *     @param {OX.PacketAdapter} [callbacks.onSuccess.packet] The packet that contains the error.
+     *     @param {OX.Subscription} [callbacks.onSuccess.subscription] The original subscription hash
      * @returns {void}
      *
      * @see <a href="http://xmpp.org/extensions/xep-0060.html#subscriber-configure-submit">XEP-0060: Subscriber Configuration</a>
@@ -584,17 +595,6 @@ OX.Mixin.Subscribable = (function () {
             for (var i = 0, len = subs.length; i < len; i++) {
               if (subs[i].subscription === 'subscribed') {
                 subs[i].node = finalURI.queryParam('node'); // Node is not set when specifying a node.
-
-                // make sure our registered handlers get fired on resubscription
-                var tmp = callbacks.onSuccess;
-                callbacks.onSuccess = function (cb, packet) {
-                  return function (origURI, finalURI, packet) {
-                    if (cb) cb(origURI, finalURI, packet);
-                    if (that._subscriptionHandlers.onSubscribed) {
-                      that._subscriptionHandlers.onSubscribed(finalURI, packet);
-                    }
-                  };
-                }(tmp,packet);
 
                 that.configureNodeSubscription(subs[i], subOptions, callbacks, {
                   origURI: requestedURI
@@ -692,7 +692,7 @@ OX.Mixin.Subscribable = (function () {
      *
      * Only one handler can be registered for a given event at a time.
      *
-     * @param {String} event One of the strings 'onPending', 'onSubscribed', 'onUnsubscribed', 'onPublish' or 'onRetract'.
+     * @param {String} event One of the strings 'onConfigure', 'onPending', 'onSubscribed', 'onResubscribe', 'onUnsubscribed', 'onPublish' or 'onRetract'.
      * @param {Function} handler A function which accepts one argument, which is the packet response.
      * @param {Object} [target] The object to apply as the value 'this' in the function.
      * @returns {void}
