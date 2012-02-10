@@ -8,25 +8,16 @@ body.doc {
 }
 
 .doc .banner {
-  padding: 5px;
-
-  background-color: #CCC;
-  background: -webkit-gradient(
-    linear, left bottom, left top, color-stop(0, #BBB), color-stop(0.7, #DDD)
-  );
-  background: -moz-linear-gradient(
-    center bottom, #BBB 0%, #DDD 70%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDDDDD', endColorstr='#BBBBBB');
-  border-bottom: 1px solid #888;
-
-  text-align: center;
-  text-shadow: #EEE 0px 1px 0px;
+  border-bottom: 1px solid #E2E0E0;
+  font-size: 14px;
+  padding-left: 10px;
+  color: #666;
 }
 
 .doc .banner img.handle {
   position: absolute;
-  top: 5px;
+  top: 50%;
+  margin-top: -8px;
   right: 3px;
   width: 7px;
   height: 15px;
@@ -43,18 +34,16 @@ body.doc {
   left: 0;
   right: 0;
 
-  background-color: #333;
-  background: -webkit-gradient(
-    linear, left bottom, left top, color-stop(0, #111), color-stop(0.7, #333)
-  );
-  background: -moz-linear-gradient(
-    center bottom, #111 0%, #333 70%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111');
-  border-bottom: 1px solid #777;
+  background-color: #062C3F;
+  background: -webkit-gradient(linear, #09405B, #062C3F);
+  background: -webkit-linear-gradient(top, #09405B, #062C3F);
+  background:    -moz-linear-gradient(top, #09405B, #062C3F);
+  background:     -ms-linear-gradient(top, #062C3F, #04212F);
+  background:      -o-linear-gradient(top, #062C3F, #04212F);
+  background:         linear-gradient(from top, #062C3F, #04212F);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#062C3F', endColorstr='#04212F');
+  border-bottom: 5px solid #CECECE;
   color: white;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.7),
-               0px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
 .doc #header h1 {
@@ -72,73 +61,38 @@ body.doc {
   padding-left: 10px;
 }
 
-
-.doc #header #status {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
-
 .doc p {
   line-height: 1.5em !important;
   margin: 1em 0px !important;
 }
 
-.doc #header #status span {
-  position: relative;
-  display: inline-block;
-  zoom: 1; *display: inline; _height: 30px; /* IE Hack */
-  width: 8px;
-  height: 8px;
-  -moz-box-shadow: 0px 0px 10px #000,
-                   inset rgba(0, 0, 0, 0.6) 0px 0px 2px;
-  -webkit-box-shadow: 0px 0px 10px #000,
-                      inset rgba(0, 0, 0, 0.6) 0px 0px 2px;
-  box-shadow: 0px 0px 10px #000,
-              inset rgba(0, 0, 0, 0.6) 0px 0px 2px;
-
-  background-color: #FFF;
-  -moz-border-radius: 4px;
-  -webkit-border-4adius: 4px;
-  border-radius: 4px;
-}
-
-.doc #header #status span.pass {
-  background-color: #89DB30;
-}
-
-.doc #header #status span.fail {
-  background-color: #D23737;
-}
-
 .doc #module {
   position: absolute;
   z-index: 4;
-  top: 60px;
+  top: 67px;
   height: 29px;
   left: 0;
   right: 0;
   padding-left: 20px;
 
-  background-color: #666;
-  background: -webkit-gradient(
-    linear, left bottom, left top, color-stop(0, #444), color-stop(0.7, #666)
-  );
-  background: -moz-linear-gradient(
-    center bottom, #444 0%, #666 70%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#666666', endColorstr='#444444');
-  border-bottom: 1px solid #222;
-  color: white;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.7),
-               0px 1px 0px rgba(255, 255, 255, 0.3);
+  background: -webkit-gradient(linear, #F4F5F5, #E2E5E6);
+  background: -webkit-linear-gradient(top, #F4F5F5, #E2E5E6);
+  background:    -moz-linear-gradient(top, #F4F5F5, #E2E5E6);
+  background:     -ms-linear-gradient(top, #F4F5F5, #E2E5E6);
+  background:      -o-linear-gradient(top, #F4F5F5, #E2E5E6);
+  background:         linear-gradient(from top, #F4F5F5, #E2E5E6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F4F5F5', endColorstr='#E2E5E6');
+
+  background-color: #E2E5E6;
+  color: #7E8A8E;
+  text-shadow: #FFF 0px 1px 1px;
+  border-bottom: 1px solid #E2E0E0;
 }
 
 .doc #module h1 {
   margin: 0px;
   padding: 5px 0px 2px;
   font-size: 16px;
-  font-weight: normal;
   display: inline-block;
   zoom: 1; *display: inline; _height: 30px; /* IE Hack */
 }
@@ -152,18 +106,15 @@ body.doc {
 
 .doc #module a {
   text-decoration: underline;
-  color: white;
+  color: #7E8A8E;
 }
 
 .doc #index {
   position: absolute;
-  top: 90px;
+  top: 97px;
   left: 0px;
   width: 225px;
-  bottom: 28px;
-
-  background-color: #DDD;
-  border-right: 1px solid #888;
+  bottom: 0px;
   padding-top: 20px;
 }
 
@@ -180,22 +131,23 @@ body.doc {
 }
 
 .doc #index a {
-  color: black;
+  color: #222;
   text-decoration: none;
 }
 
 .doc #index .banner {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 10px;
+  right: 10px;
   top: 0;
-  height: 15px;
+  height: 49px;
+  line-height: 50px;
 }
 
 .doc #index .class-list {
   overflow: auto;
   position: absolute;
-  top: 26px;
+  top: 50px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -203,25 +155,30 @@ body.doc {
 
 .doc #content {
   position: absolute;
-  top: 90px;
+  top: 97px;
   left: 226px;
   right: 0px;
-  bottom: 28px;
+  bottom: 0px;
 
   overflow: auto;
   padding: 20px;
   padding-top: 0;
+  padding-bottom: 48px;
+
+  -webkit-box-shadow: inset 4px 0 5px #EFEFEF;
+     -moz-box-shadow: inset 4px 0 5px #EFEFEF;
+          box-shadow: inset 4px 0 5px #EFEFEF;
 }
 
 .doc #content h1 {
   border-bottom: 1px solid #999;
   font-size: 175%;
-  margin-top: 1.3em !important;
+  margin-top: 1.2em !important;
 }
 
 .doc #content h2 {
   font-size: 150%;
-  margin-top: 1.3em !important;
+  margin-top: 1.1em !important;
 }
 
 .doc #content h3 {
@@ -234,26 +191,17 @@ body.doc {
 }
 
 .doc .fineprint {
-  position: absolute;
-  bottom: 0;
-  height: 12px;
-  left: 0;
-  right: 0;
+  line-height: 28px;
 
-  background-color: #DDD;
-  background: -webkit-gradient(
-    linear, left bottom, left top, color-stop(0, #BBB), color-stop(0.7, #DDD)
-  );
-  background: -moz-linear-gradient(
-    center bottom, #BBB 0%, #DDD 70%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDDDDD', endColorstr='#BBBBBB');
-  border-top: 1px solid #888;
+  border-top: 1px solid #E2E0E0;
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  height: 28px;
 
   text-align: right;
-  text-shadow: #EEE 0px 1px 0px;
+  color: #646C6F;
 
-  padding-top: 5px;
   padding-right: 15px;
 }
 
@@ -273,7 +221,6 @@ body.doc {
   margin-bottom: 16px;
   margin-left: 20px;
   margin-right: 20px;
-  border-left: 4px solid #888;
 }
 
 .doc .code code {
@@ -283,26 +230,11 @@ body.doc {
 
   font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
   word-wrap: normal;
-  background-color: #222;
+  background-color: #062C3F;
+  box-shadow: inset 0 0 10px #04212F;
 
   color: white;
   line-height: 130%;
-}
-
-.doc .status-bar {
-  padding: 5px;
-
-  background-color: #CCC;
-  background: -webkit-gradient(
-    linear, left bottom, left top, color-stop(0, #BBB), color-stop(0.7, #DDD)
-  );
-  background: -moz-linear-gradient(
-    center bottom, #BBB 0%, #DDD 70%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDDDDD', endColorstr='#BBBBBB');
-  border-bottom: 1px solid #888;
-
-  text-shadow: #EEE 0px 1px 0px;  
 }
 
 .doc .console {
@@ -312,12 +244,6 @@ body.doc {
   background-color: #222;
   color: white;
   line-height: 130%;
-}
-
-.doc #content .status-bar a {
-  display: block;
-  padding-left: 3px;
-  text-decoration: none;
 }
 
 .doc .string {
