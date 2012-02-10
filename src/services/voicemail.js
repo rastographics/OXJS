@@ -116,6 +116,9 @@ OX.Service.Voicemail = OX.Base.extend(OX.Mixin.Subscribable, function () {
       /** The caller ID of this voicemail. */
       callerID: null,
 
+      /** The SIP address this voicemail is from. */
+      sipfrom: null,
+
       /** The time this voicemail was created. */
       created:  null,
 
