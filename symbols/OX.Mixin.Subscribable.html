@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="JsDoc Toolkit" />
+
+	<title>JsDoc Reference - OX.Mixin.Subscribable</title>
+	
+  <link rel="stylesheet" type="text/css" href="../static/default.css"></link>
+  <link rel="stylesheet" type="text/css" href="../static/doc.css"></link>
+</head>
+
+<body class="doc">
+  <div id="header">
+  <h1><a href="../">OXJS</a></h1>
+  <span class="caption">OnSIP XMPP-API JavaScript SDK</span>
+</div>
+
+  <div id="module">
+		<h1>
+				
+		  Namespace OX.Mixin.Subscribable
+    </h1>
+    
+      <span class="src"><a href="../symbols/src/mixins_subscribable.js.html">subscribable.js</a></span>
+    
+  </div>
+	<div id="index">
+		<span class="banner">Class Index<img class="handle" src="../static/dot.gif" onmousedown="beginResize()" /></span>
+<span class="class-list"><ul><li><a href="../symbols/Function.html">Function</a></li><li><a href="../symbols/OX.html">OX</a></li><ul><li><a href="../symbols/OX.Base.html">Base</a></li><li><a href="../symbols/OX.Connection.html">Connection</a></li><li><a href="../symbols/OX.ConnectionAdapter.html">ConnectionAdapter</a></li><li><a href="../symbols/OX.Error.html">Error</a></li><li><a href="../symbols/OX.Item.html">Item</a></li><li><a href="../symbols/OX.Mixin.html">Mixin</a></li><ul><li><a href="../symbols/OX.Mixin.CallDialog.html">CallDialog</a></li><li><a href="../symbols/OX.Mixin.EntityTime.html">EntityTime</a></li><li><a href="../symbols/OX.Mixin.Subscribable.html">Subscribable</a></li></ul><li><a href="../symbols/OX.PacketAdapter.html">PacketAdapter</a></li><li><a href="../symbols/OX.Service.html">Service</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.html">ActiveCalls</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Auth.html">Auth</a></li><li><a href="../symbols/OX.Service.Directories.html">Directories</a></li><ul><li><a href="../symbols/OX.Service.Directories.AliasItem.html">AliasItem</a></li><li><a href="../symbols/OX.Service.Directories.EntityItem.html">EntityItem</a></li><li><a href="../symbols/OX.Service.Directories.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Preferences.html">Preferences</a></li><li><a href="../symbols/OX.Service.RecentCalls.html">RecentCalls</a></li><ul><li><a href="../symbols/OX.Service.RecentCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Rosters.html">Rosters</a></li><li><a href="../symbols/OX.Service.UserAgents.html">UserAgents</a></li><ul><li><a href="../symbols/OX.Service.UserAgents.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Voicemail.html">Voicemail</a></li><ul><li><a href="../symbols/OX.Service.Voicemail.Item.html">Item</a></li><li><a href="../symbols/OX.Service.Voicemail.LabelItem.html">LabelItem</a></li></ul></ul><li><a href="../symbols/OX.Settings.html">Settings</a></li><ul><li><a href="../symbols/OX.Settings.URIs.html">URIs</a></li><ul><li><a href="../symbols/OX.Settings.URIs.command.html">command</a></li><li><a href="../symbols/OX.Settings.URIs.entity.html">entity</a></li><li><a href="../symbols/OX.Settings.URIs.presence.html">presence</a></li><li><a href="../symbols/OX.Settings.URIs.pubSub.html">pubSub</a></li></ul></ul><li><a href="../symbols/OX.StropheAdapter.html">StropheAdapter</a></li><li><a href="../symbols/OX.Subscription.html">Subscription</a></li><li><a href="../symbols/OX.URI.html">URI</a></li><ul><li><a href="../symbols/OX.URI.Base.html">Base</a></li></ul><li><a href="../symbols/OX.XML.html">XML</a></li><ul><li><a href="../symbols/OX.XML.Element.html">Element</a></li><li><a href="../symbols/OX.XML.XMPP.html">XMPP</a></li><ul><li><a href="../symbols/OX.XML.XMPP.Command.html">Command</a></li><li><a href="../symbols/OX.XML.XMPP.IQ.html">IQ</a></li><li><a href="../symbols/OX.XML.XMPP.Message.html">Message</a></li><li><a href="../symbols/OX.XML.XMPP.PubSub.html">PubSub</a></li><li><a href="../symbols/OX.XML.XMPP.Stanza.html">Stanza</a></li><li><a href="../symbols/OX.XML.XMPP.XDataForm.html">XDataForm</a></li></ul></span>
+<script type="text/javascript">
+function beginResize(e) {
+  document.addEventListener('mousemove', resize, true);
+  document.addEventListener('mouseup', endResize, true);
+}
+
+function resize(e) {
+  var index = document.getElementById('index'),
+      content = document.getElementById('content'),
+      x = (e.pageX || e.clientX) + 7;
+
+  if (x <= 225) {
+    x = 225;
+  } else if (x >= 400) {
+    x = 400;
+  }
+  index.setAttribute('style', 'width: ' + x + "px");
+  content.setAttribute('style', 'left: ' + x + "px");
+
+  e.returnValue = false;
+  return false;
+}
+
+function endResize(e) {
+  document.removeEventListener('mousemove', resize, true);
+}
+</script>
+
+	</div>
+  <div id="content">
+
+<!-- ============================== class summary ========================== -->
+    
+      <h1 class="title">Overview</h1>
+      
+			<p class="description">
+				Subscribable mixin.
+Something's subscribable if it communicates with a JID that supports
+<a href="http://xmpp.org/extensions/xep-0060.html">XEP-0060: Publish-Subscribe</a>.
+			</p>
+      
+      
+			
+				<dl class="detailList">
+				<dt class="heading">See:</dt>
+				
+				<dt><a href="http://xmpp.org/extensions/xep-0060.html">XEP-0060: Publish-Subscribe</a></dt>
+				
+				</dl>
+			
+      
+        <dl class="detailList">
+				<dt class="heading">Requires:</dt>
+				
+				<dt>A 'connectionAdapter' property which is an <a href="../symbols/OX.ConnectionAdapter.html">OX.ConnectionAdapter</a> object on receiving object.</dt>
+				
+				<dt>A 'pubSub' property that's the URI of the PubSub service.</dt>
+				
+				<dt>An implementation of 'itemFromElement' which takes an Node or Element and returns an item.</dt>
+				
+				</dl>
+			
+			
+			
+			
+    
+
+
+<!-- ============================== constructor summary ====================
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class OX.Mixin.Subscribable.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/OX.Mixin.Subscribable.html">OX.Mixin.Subscribable</a></b>
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			-->
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+        <h1 class="title">Method Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#configureNodeSubscription">configureNodeSubscription</a></b>(subscription, subOptions, callbacks)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#getItems">getItems</a></b>(node, callbacks)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#getSubscriptions">getSubscriptions</a></b>(callbacks, options)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#registerHandler">registerHandler</a></b>(event, handler, target)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#subscribe">subscribe</a></b>(node, subOptions, callbacks, options)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#unregisterHandler">unregisterHandler</a></b>(event)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#unsubscribe">unsubscribe</a></b>(node, callbacks)</td>
+            </tr>
+					
+          </table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+				
+				
+        <h1 class="title">Event Summary</h2>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#event:onPending">onPending</a></b>(uri, packet)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#event:onPublish">onPublish</a></b>(item, packet)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#event:onRetract">onRetract</a></b>(uri, packet)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#event:onSubscribed">onSubscribed</a></b>(uri, packet)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Mixin.Subscribable.html#event:onUnsubscribed">onUnsubscribed</a></b>(uri, packet)</td>
+            </tr>
+					
+          </table>
+				
+				
+				
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<h1 class="title">Method Detail</h1>
+				
+					<a name="configureNodeSubscription"> </a>
+          <div>
+             <a name="configureNodeSubscription"> </a>
+             <h3><span class="light">(void)</span> <b>configureNodeSubscription</b>(subscription, subOptions, callbacks)</h3>
+
+             <div class="description">
+               
+  				       <dt>Configure a subscription with the subscription options.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.Subscription.html">OX.Subscription</a>)</span> <b>subscription</b>
+									
+								</dt>
+								<dd>The subscription to configure.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>subOptions</b>
+									<i>Optional</i>
+								</dt>
+								<dd>Subscription options</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>callbacks</b>
+									<i>Optional</i>
+								</dt>
+								<dd>an object supplying functions for 'onSuccess', and 'onError'.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onSuccess</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The success callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.requestedURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The URI you requested.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.finalURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The redirected URI that your requested URI maps to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onSuccess.packet</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The packet of the returned subscription.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onError</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The error callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onError.requestedURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The URI you requested.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onError.finalURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The redirected URI that your requested URI maps to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onSuccess.packet</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The packet that contains the error.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dt><a href="http://xmpp.org/extensions/xep-0060.html#subscriber-configure-submit">XEP-0060: Subscriber Configuration</a></dt>
+							
+							</dl>
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="getItems"> </a>
+          <div>
+             <a name="getItems"> </a>
+             <h3><span class="light">(void)</span> <b>getItems</b>(node, callbacks)</h3>
+
+             <div class="description">
+               
+  				       <dt>Get the items on a PubSub node.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>node</b>
+									
+								</dt>
+								<dd>The node ID to subscribe to</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>callbacks</b>
+									<i>Optional</i>
+								</dt>
+								<dd>an object supplying functions for 'onSuccess', and 'onError'</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onSuccess</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The success callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.Item.html">OX.Item</a>[])</span> <b>callbacks.onSuccess.items</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The items on the PubSub node.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onError</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The error callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onSuccess.packet</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The recieved packet.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;service.getItems(<span class="string">'/'</span>,&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;onSuccess:&nbsp;<span class="keyword">function</span>&nbsp;(items)&nbsp;{},<br/>&nbsp;&nbsp;&nbsp;&nbsp;onError:&nbsp;&nbsp;&nbsp;<span class="keyword">function</span>&nbsp;(errorPacket)&nbsp;{}<br/>&nbsp;&nbsp;});</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="getSubscriptions"> </a>
+          <div>
+             <a name="getSubscriptions"> </a>
+             <h3><span class="light">(void)</span> <b>getSubscriptions</b>(callbacks, options)</h3>
+
+             <div class="description">
+               
+  				       <dt>Get subscriptions on a node.
+
+Passing an initial <tt>node</tt> parameter retrieves subscriptions on the requested
+node.  Otherwise a single parameter of <tt>callbacks</tt> requests all subscriptions
+at all nodes of the pubsub service.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>callbacks</b>
+									
+								</dt>
+								<dd>an object supplying functions for 'onSuccess' and 'onError'</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onSuccess</b>
+									
+								</dt>
+								<dd>The success callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.requestedURI</b>
+									
+								</dt>
+								<dd>The URI you requested.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.finalURI</b>
+									
+								</dt>
+								<dd>The redirected URI that your requested URI maps to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.Subscription.html">OX.Subscription</a>[])</span> <b>callbacks.onSuccess.subscriptions</b>
+									
+								</dt>
+								<dd>The subscriptions associated with the finalURI.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onSuccess.packet</b>
+									
+								</dt>
+								<dd>The packet recieved.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onError</b>
+									
+								</dt>
+								<dd>The error callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onError.requestedURI</b>
+									
+								</dt>
+								<dd>The URI you requested.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onError.finalURI</b>
+									
+								</dt>
+								<dd>The redirected URI that your requested URI maps to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onError.packet</b>
+									
+								</dt>
+								<dd>The packet recieved.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd></dd>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>options.node</b>
+									
+								</dt>
+								<dd>The node name to request subscriptions on. Omitting the node name implies all nodes</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Boolean)</span> <b>options.strict</b>
+									
+								</dt>
+								<dd>Only apply callbacks to subscriptions that match the exact JID as the current connection.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> This will NOT match a bare JID to a full JID.</dt>
+							
+							</dl>
+						
+						
+
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dt><a href="http://xmpp.org/extensions/xep-0060.html#entity-subscriptions">XEP: 0060 - Entity Subscriptions</a></dt>
+							
+							</dl>
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;service.getSubscriptions({<br/>&nbsp;&nbsp;&nbsp;&nbsp;onSuccess:&nbsp;<span class="keyword">function</span>&nbsp;(requestedURI,&nbsp;finalURI,&nbsp;subscriptions,&nbsp;packet)&nbsp;{},<br/>&nbsp;&nbsp;&nbsp;&nbsp;onError:&nbsp;<span class="keyword">function</span>&nbsp;(requestedURI,&nbsp;finalURI,&nbsp;packet)<br/>&nbsp;&nbsp;},&nbsp;{node:&nbsp;<span class="string">'/'</span>});</code></p>
+					
+					<p class="code"><code>&nbsp;&nbsp;service.getSubscriptions({<br/>&nbsp;&nbsp;&nbsp;&nbsp;onSuccess:&nbsp;<span class="keyword">function</span>&nbsp;(requestedURI,&nbsp;finalURI,&nbsp;subscriptions,&nbsp;packet)&nbsp;{},<br/>&nbsp;&nbsp;&nbsp;&nbsp;onError:&nbsp;<span class="keyword">function</span>&nbsp;(requestedURI,&nbsp;finalURI,&nbsp;packet)<br/>&nbsp;&nbsp;});</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="registerHandler"> </a>
+          <div>
+             <a name="registerHandler"> </a>
+             <h3><span class="light">(void)</span> <b>registerHandler</b>(event, handler, target)</h3>
+
+             <div class="description">
+               
+  				       <dt>Registers a handler for an event.
+
+Only one handler can be registered for a given event at a time.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>event</b>
+									
+								</dt>
+								<dd>One of the strings 'onPending', 'onSubscribed', 'onUnsubscribed', 'onPublish' or 'onRetract'.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>handler</b>
+									
+								</dt>
+								<dd>A function which accepts one argument, which is the packet response.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>target</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The object to apply as the value 'this' in the function.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;service.registerHandler(<span class="string">'onPublish'</span>,&nbsp;<span class="keyword">function</span>&nbsp;(item)&nbsp;{});</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="subscribe"> </a>
+          <div>
+             <a name="subscribe"> </a>
+             <h3><span class="light">(void)</span> <b>subscribe</b>(node, subOptions, callbacks, options)</h3>
+
+             <div class="description">
+               
+  				       <dt>Subscribe to a node.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>node</b>
+									
+								</dt>
+								<dd>The node ID to subscribe to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>subOptions</b>
+									<i>Optional</i>
+								</dt>
+								<dd>Subscription options</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>callbacks</b>
+									<i>Optional</i>
+								</dt>
+								<dd>an object supplying functions for 'onSuccess', and 'onError'.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onSuccess</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The success callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.requestedURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The URI you requested.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.finalURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The redirected URI that your requested URI maps to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onSuccess.packet</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The packet of the returned subscription.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onError</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The error callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onError.requestedURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The URI you requested.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onError.finalURI</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The redirected URI that your requested URI maps to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>callbacks.onSuccess.packet</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The packet that contains the error.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>options</b>
+									<i>Optional</i>
+								</dt>
+								<dd>Optional arguments.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Boolean)</span> <b>options.reuseSubscriptions</b>
+									<i>Optional</i>
+								</dt>
+								<dd>Tells subscribe to lookup subscriptions on the requested node, then reuse any if they exist. If none exist, it will create a new subscription.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;subOptions&nbsp;=&nbsp;{expire:&nbsp;<span class="keyword">new</span>&nbsp;Date()};<br/>&nbsp;&nbsp;service.subscribe(<span class="string">'/'</span>,&nbsp;subOptions,&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;onSuccess:&nbsp;<span class="keyword">function</span>&nbsp;(requestedURI,&nbsp;finalURI)&nbsp;{},<br/>&nbsp;&nbsp;&nbsp;&nbsp;onError:&nbsp;&nbsp;&nbsp;<span class="keyword">function</span>&nbsp;(requestedURI,&nbsp;finalURI)&nbsp;{}<br/>&nbsp;&nbsp;});</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="unregisterHandler"> </a>
+          <div>
+             <a name="unregisterHandler"> </a>
+             <h3><span class="light">(void)</span> <b>unregisterHandler</b>(event)</h3>
+
+             <div class="description">
+               
+  				       <dt>Unregisters an event handler.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>event</b>
+									
+								</dt>
+								<dd>One of the strings 'onPending', 'onSubscribed', 'onUnsubscribed', 'onPublish' or 'onRetract'.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;service.unregisterHandler(<span class="string">'onPublish'</span>,&nbsp;handlerFunction);</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="unsubscribe"> </a>
+          <div>
+             <a name="unsubscribe"> </a>
+             <h3><span class="light">(void)</span> <b>unsubscribe</b>(node, callbacks)</h3>
+
+             <div class="description">
+               
+  				       <dt>Unsubscribe from a node.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>node</b>
+									
+								</dt>
+								<dd>The node ID to subscribe to</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>callbacks</b>
+									<i>Optional</i>
+								</dt>
+								<dd>an object supplying functions for 'onSuccess', and 'onError'.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onSuccess</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The success callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.uri</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The URI you unsubscribed from.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callbacks.onError</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The error callback.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.html">OX.URI</a>)</span> <b>callbacks.onSuccess.uri</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The URI you failed to unsubscribe from.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;service.unsubscribe(<span class="string">'/'</span>,&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;onSuccess:&nbsp;<span class="keyword">function</span>&nbsp;(uri)&nbsp;{},<br/>&nbsp;&nbsp;&nbsp;&nbsp;onError:&nbsp;&nbsp;&nbsp;<span class="keyword">function</span>&nbsp;(uri)&nbsp;{}<br/>&nbsp;&nbsp;});</code></p>
+					
+					
+				 
+					
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+				<h1 class="title">Event Detail</h1>
+				
+					<a name="onPending"> </a>
+          <div>
+             <a name="onPending"> </a>
+             <h3><span class="light">(void)</span> <b>onPending</b>(uri, packet)</h3>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.Base.html">OX.URI.Base</a>)</span> <b>uri</b>
+									
+								</dt>
+								<dd>The URI of the subscription request, after redirects.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>packet</b>
+									
+								</dt>
+								<dd>The packet that caused the 'onPending' event.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+             <div class="description">
+				     This handler is called when we get a pending subscription
+notification.
+						 
+             </div>
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="onPublish"> </a>
+          <div>
+             <a name="onPublish"> </a>
+             <h3><span class="light">(void)</span> <b>onPublish</b>(item, packet)</h3>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.Item.html">OX.Item</a>)</span> <b>item</b>
+									
+								</dt>
+								<dd>The published item.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>packet</b>
+									
+								</dt>
+								<dd>The packet that caused the 'onRetract' event.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+             <div class="description">
+				     This handler is called when an item is published.
+						 
+             </div>
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="onRetract"> </a>
+          <div>
+             <a name="onRetract"> </a>
+             <h3><span class="light">(void)</span> <b>onRetract</b>(uri, packet)</h3>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.Base.html">OX.URI.Base</a>)</span> <b>uri</b>
+									
+								</dt>
+								<dd>The URI of the retracted item.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>packet</b>
+									
+								</dt>
+								<dd>The packet that caused the 'onRetract' event.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+             <div class="description">
+				     This handler is called when an item is retracted.
+						 
+             </div>
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="onSubscribed"> </a>
+          <div>
+             <a name="onSubscribed"> </a>
+             <h3><span class="light">(void)</span> <b>onSubscribed</b>(uri, packet)</h3>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.Base.html">OX.URI.Base</a>)</span> <b>uri</b>
+									
+								</dt>
+								<dd>The URI of the subscription request, after redirects.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>packet</b>
+									
+								</dt>
+								<dd>The packet that caused the 'onSubscribed' event.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+             <div class="description">
+				     This handler is called when we get a completed subscription.
+						 
+             </div>
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="onUnsubscribed"> </a>
+          <div>
+             <a name="onUnsubscribed"> </a>
+             <h3><span class="light">(void)</span> <b>onUnsubscribed</b>(uri, packet)</h3>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.URI.Base.html">OX.URI.Base</a>)</span> <b>uri</b>
+									
+								</dt>
+								<dd>The node we were unsubscribed from.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.PacketAdapter.html">OX.PacketAdapter</a>)</span> <b>packet</b>
+									
+								</dt>
+								<dd>The packet that causded the 'onUnsubscribed' event.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+             <div class="description">
+				     This handler is called when we our subscription is removed.
+						 
+             </div>
+
+						
+					
+
+					</div>
+					
+				 
+					
+					
+				
+			
+		
+      <!-- ============================== footer ================================= -->
+  		<div class="fineprint" style="clear:both">
+		  	
+	  		Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.1.0 on Fri Feb 10 2012 12:58:58 GMT-0500 (EST)
+  		</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="JsDoc Toolkit" />
+
+	<title>JsDoc Reference - OX.Settings.URIs.pubSub</title>
+	
+  <link rel="stylesheet" type="text/css" href="../static/default.css"></link>
+  <link rel="stylesheet" type="text/css" href="../static/doc.css"></link>
+</head>
+
+<body class="doc">
+  <div id="header">
+  <h1><a href="../">OXJS</a></h1>
+  <span class="caption">OnSIP XMPP-API JavaScript SDK</span>
+</div>
+
+  <div id="module">
+		<h1>
+				
+		  Namespace OX.Settings.URIs.pubSub
+    </h1>
+    
+      <span class="src"><a href="../symbols/src/settings.js.html">settings.js</a></span>
+    
+  </div>
+	<div id="index">
+		<span class="banner">Class Index<img class="handle" src="../static/dot.gif" onmousedown="beginResize()" /></span>
+<span class="class-list"><ul><li><a href="../symbols/Function.html">Function</a></li><li><a href="../symbols/OX.html">OX</a></li><ul><li><a href="../symbols/OX.Base.html">Base</a></li><li><a href="../symbols/OX.Connection.html">Connection</a></li><li><a href="../symbols/OX.ConnectionAdapter.html">ConnectionAdapter</a></li><li><a href="../symbols/OX.Error.html">Error</a></li><li><a href="../symbols/OX.Item.html">Item</a></li><li><a href="../symbols/OX.Mixin.html">Mixin</a></li><ul><li><a href="../symbols/OX.Mixin.CallDialog.html">CallDialog</a></li><li><a href="../symbols/OX.Mixin.EntityTime.html">EntityTime</a></li><li><a href="../symbols/OX.Mixin.Subscribable.html">Subscribable</a></li></ul><li><a href="../symbols/OX.PacketAdapter.html">PacketAdapter</a></li><li><a href="../symbols/OX.Service.html">Service</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.html">ActiveCalls</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Auth.html">Auth</a></li><li><a href="../symbols/OX.Service.Directories.html">Directories</a></li><ul><li><a href="../symbols/OX.Service.Directories.AliasItem.html">AliasItem</a></li><li><a href="../symbols/OX.Service.Directories.EntityItem.html">EntityItem</a></li><li><a href="../symbols/OX.Service.Directories.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Preferences.html">Preferences</a></li><li><a href="../symbols/OX.Service.RecentCalls.html">RecentCalls</a></li><ul><li><a href="../symbols/OX.Service.RecentCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Rosters.html">Rosters</a></li><li><a href="../symbols/OX.Service.UserAgents.html">UserAgents</a></li><ul><li><a href="../symbols/OX.Service.UserAgents.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Voicemail.html">Voicemail</a></li><ul><li><a href="../symbols/OX.Service.Voicemail.Item.html">Item</a></li><li><a href="../symbols/OX.Service.Voicemail.LabelItem.html">LabelItem</a></li></ul></ul><li><a href="../symbols/OX.Settings.html">Settings</a></li><ul><li><a href="../symbols/OX.Settings.URIs.html">URIs</a></li><ul><li><a href="../symbols/OX.Settings.URIs.command.html">command</a></li><li><a href="../symbols/OX.Settings.URIs.entity.html">entity</a></li><li><a href="../symbols/OX.Settings.URIs.presence.html">presence</a></li><li><a href="../symbols/OX.Settings.URIs.pubSub.html">pubSub</a></li></ul></ul><li><a href="../symbols/OX.StropheAdapter.html">StropheAdapter</a></li><li><a href="../symbols/OX.Subscription.html">Subscription</a></li><li><a href="../symbols/OX.URI.html">URI</a></li><ul><li><a href="../symbols/OX.URI.Base.html">Base</a></li></ul><li><a href="../symbols/OX.XML.html">XML</a></li><ul><li><a href="../symbols/OX.XML.Element.html">Element</a></li><li><a href="../symbols/OX.XML.XMPP.html">XMPP</a></li><ul><li><a href="../symbols/OX.XML.XMPP.Command.html">Command</a></li><li><a href="../symbols/OX.XML.XMPP.IQ.html">IQ</a></li><li><a href="../symbols/OX.XML.XMPP.Message.html">Message</a></li><li><a href="../symbols/OX.XML.XMPP.PubSub.html">PubSub</a></li><li><a href="../symbols/OX.XML.XMPP.Stanza.html">Stanza</a></li><li><a href="../symbols/OX.XML.XMPP.XDataForm.html">XDataForm</a></li></ul></span>
+<script type="text/javascript">
+function beginResize(e) {
+  document.addEventListener('mousemove', resize, true);
+  document.addEventListener('mouseup', endResize, true);
+}
+
+function resize(e) {
+  var index = document.getElementById('index'),
+      content = document.getElementById('content'),
+      x = (e.pageX || e.clientX) + 7;
+
+  if (x <= 225) {
+    x = 225;
+  } else if (x >= 400) {
+    x = 400;
+  }
+  index.setAttribute('style', 'width: ' + x + "px");
+  content.setAttribute('style', 'left: ' + x + "px");
+
+  e.returnValue = false;
+  return false;
+}
+
+function endResize(e) {
+  document.removeEventListener('mousemove', resize, true);
+}
+</script>
+
+	</div>
+  <div id="content">
+
+<!-- ============================== class summary ========================== -->
+    
+      <h1 class="title">Overview</h1>
+      
+			<p class="description">
+				URIs for PubSub.
+			</p>
+      
+      
+			
+      
+			
+			
+			
+    
+
+
+<!-- ============================== constructor summary ====================
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class OX.Settings.URIs.pubSub.">
+				<caption>Namespace Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/OX.Settings.URIs.pubSub.html">OX.Settings.URIs.pubSub</a></b>
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			-->
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+        
+          <h1 class="title">Field Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Settings.URIs.pubSub.html#.activeCalls">activeCalls</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Settings.URIs.pubSub.html#.directories">directories</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Settings.URIs.pubSub.html#.preferences">preferences</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Settings.URIs.pubSub.html#.recentCalls">recentCalls</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Settings.URIs.pubSub.html#.userAgents">userAgents</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Settings.URIs.pubSub.html#.voicemail">voicemail</a>
+              </td>
+            </tr>
+					
+          </table>
+				
+				
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<h1 class="title">Field Detail</h1>
+				
+          <div>
+             <a name=".activeCalls"> </a>
+             <h3> OX.Settings.URIs.pubSub.<b>activeCalls</b></h3>
+					</div>
+					<div class="description">
+						URI for active call PubSub service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".directories"> </a>
+             <h3> OX.Settings.URIs.pubSub.<b>directories</b></h3>
+					</div>
+					<div class="description">
+						URI for organization directory PubSub service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".preferences"> </a>
+             <h3> OX.Settings.URIs.pubSub.<b>preferences</b></h3>
+					</div>
+					<div class="description">
+						URI for user preferences PubSub service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".recentCalls"> </a>
+             <h3> OX.Settings.URIs.pubSub.<b>recentCalls</b></h3>
+					</div>
+					<div class="description">
+						URI for recent call PubSub service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".userAgents"> </a>
+             <h3> OX.Settings.URIs.pubSub.<b>userAgents</b></h3>
+					</div>
+					<div class="description">
+						URI for user agent PubSub service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".voicemail"> </a>
+             <h3> OX.Settings.URIs.pubSub.<b>voicemail</b></h3>
+					</div>
+					<div class="description">
+						URI for voicemail PubSub service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+		
+      <!-- ============================== footer ================================= -->
+  		<div class="fineprint" style="clear:both">
+		  	
+	  		Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.1.0 on Fri Feb 10 2012 12:58:59 GMT-0500 (EST)
+  		</div>
+		</div>
+	</body>
+</html>

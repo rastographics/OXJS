@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="JsDoc Toolkit" />
+
+	<title>JsDoc Reference - OX.StropheAdapter</title>
+	
+  <link rel="stylesheet" type="text/css" href="../static/default.css"></link>
+  <link rel="stylesheet" type="text/css" href="../static/doc.css"></link>
+</head>
+
+<body class="doc">
+  <div id="header">
+  <h1><a href="../">OXJS</a></h1>
+  <span class="caption">OnSIP XMPP-API JavaScript SDK</span>
+</div>
+
+  <div id="module">
+		<h1>
+				
+		  Class OX.StropheAdapter
+    </h1>
+    
+      <span class="src"><a href="../symbols/src/strophe_adapter.js.html">strophe_adapter.js</a></span>
+    
+  </div>
+	<div id="index">
+		<span class="banner">Class Index<img class="handle" src="../static/dot.gif" onmousedown="beginResize()" /></span>
+<span class="class-list"><ul><li><a href="../symbols/Function.html">Function</a></li><li><a href="../symbols/OX.html">OX</a></li><ul><li><a href="../symbols/OX.Base.html">Base</a></li><li><a href="../symbols/OX.Connection.html">Connection</a></li><li><a href="../symbols/OX.ConnectionAdapter.html">ConnectionAdapter</a></li><li><a href="../symbols/OX.Error.html">Error</a></li><li><a href="../symbols/OX.Item.html">Item</a></li><li><a href="../symbols/OX.Mixin.html">Mixin</a></li><ul><li><a href="../symbols/OX.Mixin.CallDialog.html">CallDialog</a></li><li><a href="../symbols/OX.Mixin.EntityTime.html">EntityTime</a></li><li><a href="../symbols/OX.Mixin.Subscribable.html">Subscribable</a></li></ul><li><a href="../symbols/OX.PacketAdapter.html">PacketAdapter</a></li><li><a href="../symbols/OX.Service.html">Service</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.html">ActiveCalls</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Auth.html">Auth</a></li><li><a href="../symbols/OX.Service.Directories.html">Directories</a></li><ul><li><a href="../symbols/OX.Service.Directories.AliasItem.html">AliasItem</a></li><li><a href="../symbols/OX.Service.Directories.EntityItem.html">EntityItem</a></li><li><a href="../symbols/OX.Service.Directories.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Preferences.html">Preferences</a></li><li><a href="../symbols/OX.Service.RecentCalls.html">RecentCalls</a></li><ul><li><a href="../symbols/OX.Service.RecentCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Rosters.html">Rosters</a></li><li><a href="../symbols/OX.Service.UserAgents.html">UserAgents</a></li><ul><li><a href="../symbols/OX.Service.UserAgents.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Voicemail.html">Voicemail</a></li><ul><li><a href="../symbols/OX.Service.Voicemail.Item.html">Item</a></li><li><a href="../symbols/OX.Service.Voicemail.LabelItem.html">LabelItem</a></li></ul></ul><li><a href="../symbols/OX.Settings.html">Settings</a></li><ul><li><a href="../symbols/OX.Settings.URIs.html">URIs</a></li><ul><li><a href="../symbols/OX.Settings.URIs.command.html">command</a></li><li><a href="../symbols/OX.Settings.URIs.entity.html">entity</a></li><li><a href="../symbols/OX.Settings.URIs.presence.html">presence</a></li><li><a href="../symbols/OX.Settings.URIs.pubSub.html">pubSub</a></li></ul></ul><li><a href="../symbols/OX.StropheAdapter.html">StropheAdapter</a></li><li><a href="../symbols/OX.Subscription.html">Subscription</a></li><li><a href="../symbols/OX.URI.html">URI</a></li><ul><li><a href="../symbols/OX.URI.Base.html">Base</a></li></ul><li><a href="../symbols/OX.XML.html">XML</a></li><ul><li><a href="../symbols/OX.XML.Element.html">Element</a></li><li><a href="../symbols/OX.XML.XMPP.html">XMPP</a></li><ul><li><a href="../symbols/OX.XML.XMPP.Command.html">Command</a></li><li><a href="../symbols/OX.XML.XMPP.IQ.html">IQ</a></li><li><a href="../symbols/OX.XML.XMPP.Message.html">Message</a></li><li><a href="../symbols/OX.XML.XMPP.PubSub.html">PubSub</a></li><li><a href="../symbols/OX.XML.XMPP.Stanza.html">Stanza</a></li><li><a href="../symbols/OX.XML.XMPP.XDataForm.html">XDataForm</a></li></ul></span>
+<script type="text/javascript">
+function beginResize(e) {
+  document.addEventListener('mousemove', resize, true);
+  document.addEventListener('mouseup', endResize, true);
+}
+
+function resize(e) {
+  var index = document.getElementById('index'),
+      content = document.getElementById('content'),
+      x = (e.pageX || e.clientX) + 7;
+
+  if (x <= 225) {
+    x = 225;
+  } else if (x >= 400) {
+    x = 400;
+  }
+  index.setAttribute('style', 'width: ' + x + "px");
+  content.setAttribute('style', 'left: ' + x + "px");
+
+  e.returnValue = false;
+  return false;
+}
+
+function endResize(e) {
+  document.removeEventListener('mousemove', resize, true);
+}
+</script>
+
+	</div>
+  <div id="content">
+
+<!-- ============================== class summary ========================== -->
+    
+      <h1 class="title">Overview</h1>
+      
+			<p class="description">
+				Provides a Connection Adapter for the BOSH library
+<a href="http://code.stanziq.com/strophe">Strophe</a>.
+The adapter tries to deal with possible memory leaks due to unanswered
+IQs, having a max queue size of handlers. You should be able to plug-and-play
+with this adapter and Strophe like the following example:
+			</p>
+      
+      
+				<dl class="detailList">
+				<dt class="heading">Extends:</dt>
+				
+				<dt><a href="../symbols/OX.ConnectionAdapter.html">OX.ConnectionAdapter</a></dt>
+				
+				</dl>
+      
+			
+      
+        <dl class="detailList">
+				<dt class="heading">Requires:</dt>
+				
+				<dt>A slot named "connection" with an instance of Strophe.Connection provided.</dt>
+				
+				</dl>
+			
+			
+			
+			
+			<p class="code"><code>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;bosh&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;Strophe.Connection(<span class="string">'/http-bind/'</span>);<br/>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;ox&nbsp;=&nbsp;OX.Connection.extend({<br/>&nbsp;&nbsp;&nbsp;&nbsp;connectionAdapter:&nbsp;OX.StropheAdapter.extend({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connection:&nbsp;bosh<br/>&nbsp;&nbsp;&nbsp;&nbsp;})<br/>&nbsp;&nbsp;});</code></p>
+			
+			
+			
+    
+
+
+<!-- ============================== constructor summary ====================
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class OX.StropheAdapter.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/OX.StropheAdapter.html">OX.StropheAdapter</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			-->
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+        
+          <h1 class="title">Field Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.StropheAdapter.html#MAX_QUEUE_SIZE">MAX_QUEUE_SIZE</a>
+              </td>
+            </tr>
+					
+          </table>
+				
+				
+				
+				<dl class="inheritsList">
+				
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+        <h1 class="title">Method Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.StropheAdapter.html#jid">jid</a></b>()</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.StropheAdapter.html#registerHandler">registerHandler</a></b>(event, handler)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.StropheAdapter.html#send">send</a></b>(xml, callback, args)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.StropheAdapter.html#unregisterHandler">unregisterHandler</a></b>(event)</td>
+            </tr>
+					
+          </table>
+				
+				
+				
+				<dl class="inheritsList">
+				
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<h1 class="title">Field Detail</h1>
+				
+          <div>
+             <a name="MAX_QUEUE_SIZE"> </a>
+             <h3> <b>MAX_QUEUE_SIZE</b></h3>
+					</div>
+					<div class="description">
+						<p>The maximum allowable size for the callback queue.
+When it reaches the maximum size, it will warn you about it,
+and begin removing stale handlers, assuming that they will never be called.
+This exists as a catch for memory leaks. Change this value to meet your needs.</p>
+
+<p>You <i>will</i> be warned when this quota is reached.
+Make sure that you aren't throwing away any live messages
+if you want to keep the MAX_QUEUE_SIZE where it is.</p>
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<h1 class="title">Method Detail</h1>
+				
+					<a name="jid"> </a>
+          <div>
+             <a name="jid"> </a>
+             <h3><span class="light">(String)</span> <b>jid</b>()</h3>
+
+             <div class="description">
+               
+  				       <dt>The connection's JID.</dd><br/>
+               
+						   
+             </div>
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(String)</span> The JID associated with the connection.</dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="registerHandler"> </a>
+          <div>
+             <a name="registerHandler"> </a>
+             <h3><span class="light">(void)</span> <b>registerHandler</b>(event, handler)</h3>
+
+             <div class="description">
+               
+  				       <dt>Subscribe to stanza via top-level XMPP tag name.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>event</b>
+									
+								</dt>
+								<dd>The top level XMPP tag name to register for.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>handler</b>
+									
+								</dt>
+								<dd>The function handler for the event.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="send"> </a>
+          <div>
+             <a name="send"> </a>
+             <h3><span class="light">(void)</span> <b>send</b>(xml, callback, args)</h3>
+
+             <div class="description">
+               
+  				       <dt>Send the xml fragment over the connection.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>xml</b>
+									
+								</dt>
+								<dd>The xml to send.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callback</b>
+									
+								</dt>
+								<dd>The function to call when done.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Array)</span> <b>args</b>
+									
+								</dt>
+								<dd>A list of arguments to provide to the callback.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="unregisterHandler"> </a>
+          <div>
+             <a name="unregisterHandler"> </a>
+             <h3><span class="light">(void)</span> <b>unregisterHandler</b>(event)</h3>
+
+             <div class="description">
+               
+  				       <dt>Unsubscribe from corresponding event.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>event</b>
+									
+								</dt>
+								<dd>The event to unsubscribe from.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+		
+      <!-- ============================== footer ================================= -->
+  		<div class="fineprint" style="clear:both">
+		  	
+	  		Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.1.0 on Fri Feb 10 2012 12:58:59 GMT-0500 (EST)
+  		</div>
+		</div>
+	</body>
+</html>

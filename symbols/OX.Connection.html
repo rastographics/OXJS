@@ -1,0 +1,648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="JsDoc Toolkit" />
+
+	<title>JsDoc Reference - OX.Connection</title>
+	
+  <link rel="stylesheet" type="text/css" href="../static/default.css"></link>
+  <link rel="stylesheet" type="text/css" href="../static/doc.css"></link>
+</head>
+
+<body class="doc">
+  <div id="header">
+  <h1><a href="../">OXJS</a></h1>
+  <span class="caption">OnSIP XMPP-API JavaScript SDK</span>
+</div>
+
+  <div id="module">
+		<h1>
+				
+		  Class OX.Connection
+    </h1>
+    
+      <span class="src"><a href="../symbols/src/connection.js.html">connection.js</a></span>
+    
+  </div>
+	<div id="index">
+		<span class="banner">Class Index<img class="handle" src="../static/dot.gif" onmousedown="beginResize()" /></span>
+<span class="class-list"><ul><li><a href="../symbols/Function.html">Function</a></li><li><a href="../symbols/OX.html">OX</a></li><ul><li><a href="../symbols/OX.Base.html">Base</a></li><li><a href="../symbols/OX.Connection.html">Connection</a></li><li><a href="../symbols/OX.ConnectionAdapter.html">ConnectionAdapter</a></li><li><a href="../symbols/OX.Error.html">Error</a></li><li><a href="../symbols/OX.Item.html">Item</a></li><li><a href="../symbols/OX.Mixin.html">Mixin</a></li><ul><li><a href="../symbols/OX.Mixin.CallDialog.html">CallDialog</a></li><li><a href="../symbols/OX.Mixin.EntityTime.html">EntityTime</a></li><li><a href="../symbols/OX.Mixin.Subscribable.html">Subscribable</a></li></ul><li><a href="../symbols/OX.PacketAdapter.html">PacketAdapter</a></li><li><a href="../symbols/OX.Service.html">Service</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.html">ActiveCalls</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Auth.html">Auth</a></li><li><a href="../symbols/OX.Service.Directories.html">Directories</a></li><ul><li><a href="../symbols/OX.Service.Directories.AliasItem.html">AliasItem</a></li><li><a href="../symbols/OX.Service.Directories.EntityItem.html">EntityItem</a></li><li><a href="../symbols/OX.Service.Directories.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Preferences.html">Preferences</a></li><li><a href="../symbols/OX.Service.RecentCalls.html">RecentCalls</a></li><ul><li><a href="../symbols/OX.Service.RecentCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Rosters.html">Rosters</a></li><li><a href="../symbols/OX.Service.UserAgents.html">UserAgents</a></li><ul><li><a href="../symbols/OX.Service.UserAgents.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Voicemail.html">Voicemail</a></li><ul><li><a href="../symbols/OX.Service.Voicemail.Item.html">Item</a></li><li><a href="../symbols/OX.Service.Voicemail.LabelItem.html">LabelItem</a></li></ul></ul><li><a href="../symbols/OX.Settings.html">Settings</a></li><ul><li><a href="../symbols/OX.Settings.URIs.html">URIs</a></li><ul><li><a href="../symbols/OX.Settings.URIs.command.html">command</a></li><li><a href="../symbols/OX.Settings.URIs.entity.html">entity</a></li><li><a href="../symbols/OX.Settings.URIs.presence.html">presence</a></li><li><a href="../symbols/OX.Settings.URIs.pubSub.html">pubSub</a></li></ul></ul><li><a href="../symbols/OX.StropheAdapter.html">StropheAdapter</a></li><li><a href="../symbols/OX.Subscription.html">Subscription</a></li><li><a href="../symbols/OX.URI.html">URI</a></li><ul><li><a href="../symbols/OX.URI.Base.html">Base</a></li></ul><li><a href="../symbols/OX.XML.html">XML</a></li><ul><li><a href="../symbols/OX.XML.Element.html">Element</a></li><li><a href="../symbols/OX.XML.XMPP.html">XMPP</a></li><ul><li><a href="../symbols/OX.XML.XMPP.Command.html">Command</a></li><li><a href="../symbols/OX.XML.XMPP.IQ.html">IQ</a></li><li><a href="../symbols/OX.XML.XMPP.Message.html">Message</a></li><li><a href="../symbols/OX.XML.XMPP.PubSub.html">PubSub</a></li><li><a href="../symbols/OX.XML.XMPP.Stanza.html">Stanza</a></li><li><a href="../symbols/OX.XML.XMPP.XDataForm.html">XDataForm</a></li></ul></span>
+<script type="text/javascript">
+function beginResize(e) {
+  document.addEventListener('mousemove', resize, true);
+  document.addEventListener('mouseup', endResize, true);
+}
+
+function resize(e) {
+  var index = document.getElementById('index'),
+      content = document.getElementById('content'),
+      x = (e.pageX || e.clientX) + 7;
+
+  if (x <= 225) {
+    x = 225;
+  } else if (x >= 400) {
+    x = 400;
+  }
+  index.setAttribute('style', 'width: ' + x + "px");
+  content.setAttribute('style', 'left: ' + x + "px");
+
+  e.returnValue = false;
+  return false;
+}
+
+function endResize(e) {
+  document.removeEventListener('mousemove', resize, true);
+}
+</script>
+
+	</div>
+  <div id="content">
+
+<!-- ============================== class summary ========================== -->
+    
+      <h1 class="title">Overview</h1>
+      
+			<p class="description">
+				<p>Connection object to use for all OXJS connections.
+The connection MUST have a valid connectionAdapter to function.
+The Connection object is the core API for OXJS.</p>
+
+<p>The Connection assumes that the consumer understands when
+to make calls (when the connection is established). This allows
+you to configure OX at read-time, rather than at run-time.</p>
+			</p>
+      
+      
+				<dl class="detailList">
+				<dt class="heading">Extends:</dt>
+				
+				<dt><a href="../symbols/OX.Base.html">OX.Base</a></dt>
+				
+				</dl>
+      
+			
+      
+        <dl class="detailList">
+				<dt class="heading">Requires:</dt>
+				
+				<dt>A 'connectionAdapter' property that extends <a href="../symbols/OX.ConnectionAdapter.html">OX.ConnectionAdapter</a>.</dt>
+				
+				</dl>
+			
+			
+			
+			
+			<p class="code"><code>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;bosh&nbsp;=&nbsp;<span class="keyword">new</span>&nbsp;Strophe.Connection(<span class="string">'/http-bind/'</span>);<br/>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;ox&nbsp;=&nbsp;OX.Connection.extend({<br/>&nbsp;&nbsp;&nbsp;&nbsp;connectionAdapter:&nbsp;OX.StropheAdapter.extend({<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;connection:&nbsp;bosh<br/>&nbsp;&nbsp;&nbsp;&nbsp;})<br/>&nbsp;&nbsp;});<br/><br/>&nbsp;&nbsp;<span class="single-line-comment">//</span>&nbsp;A&nbsp;naive&nbsp;approach...<br/>&nbsp;&nbsp;bosh.connect(<span class="string">"juliet@example.com"</span>,&nbsp;<span class="string">"romeo"</span>,&nbsp;<span class="keyword">function</span>&nbsp;(status)&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span>&nbsp;(status&nbsp;===&nbsp;Strophe.Status.CONNECTED)&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="single-line-comment">//</span>&nbsp;OK-&nbsp;OX&nbsp;is&nbsp;ready&nbsp;to&nbsp;go!&nbsp;Let's&nbsp;authenticate...<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ox.Auth.authorizePlain(<span class="string">"sip@example.com"</span>,&nbsp;<span class="string">"password"</span>,&nbsp;<span class="string">"jid@example.com"</span>,&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onSuccess:&nbsp;<span class="keyword">function</span>&nbsp;()&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(<span class="string">"You&nbsp;got&nbsp;the&nbsp;OK&nbsp;to&nbsp;go&nbsp;on&nbsp;ahead!"</span>);<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;});</code></p>
+			
+			
+			
+    
+
+
+<!-- ============================== constructor summary ====================
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class OX.Connection.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/OX.Connection.html">OX.Connection</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			-->
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+        
+          <h1 class="title">Field Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.ActiveCalls">ActiveCalls</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.Auth">Auth</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.Directories">Directories</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.Preferences">Preferences</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.RecentCalls">RecentCalls</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.UserAgents">UserAgents</a>
+              </td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td class="fixedFont right">+</td>
+              <td class="fixedFont">
+                <a href="../symbols/OX.Connection.html#.Voicemail">Voicemail</a>
+              </td>
+            </tr>
+					
+          </table>
+				
+				
+				
+				<dl class="inheritsList">
+				
+				</dl>
+				
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+        <h1 class="title">Method Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Connection.html#getJID">getJID</a></b>()</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Connection.html#registerJIDHandler">registerJIDHandler</a></b>(jid, handler, target)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Connection.html#send">send</a></b>(xml, callback, args)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.Connection.html#unregisterJIDHandler">unregisterJIDHandler</a></b>(jid)</td>
+            </tr>
+					
+          </table>
+				
+				
+				
+				<dl class="inheritsList">
+				
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== field details ========================== -->		
+			
+				<h1 class="title">Field Detail</h1>
+				
+          <div>
+             <a name=".ActiveCalls"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.ActiveCalls.html">OX.Service.ActiveCalls</a>)</span> OX.Connection.<b>ActiveCalls</b></h3>
+					</div>
+					<div class="description">
+						A useable instance of the ActiveCalls service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".Auth"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.Auth.html">OX.Service.Auth</a>)</span> OX.Connection.<b>Auth</b></h3>
+					</div>
+					<div class="description">
+						A usable instance of the Auth service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".Directories"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.Directories.html">OX.Service.Directories</a>)</span> OX.Connection.<b>Directories</b></h3>
+					</div>
+					<div class="description">
+						A usable instance of the Directories service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".Preferences"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.Preferences.html">OX.Service.Preferences</a>)</span> OX.Connection.<b>Preferences</b></h3>
+					</div>
+					<div class="description">
+						A usable instance of the Preferences service (not implemented).
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".RecentCalls"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.RecentCalls.html">OX.Service.RecentCalls</a>)</span> OX.Connection.<b>RecentCalls</b></h3>
+					</div>
+					<div class="description">
+						A usable instance of the RecentCalls service (not implemented).
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".UserAgents"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.UserAgents.html">OX.Service.UserAgents</a>)</span> OX.Connection.<b>UserAgents</b></h3>
+					</div>
+					<div class="description">
+						A usable instance of the UserAgents service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					<hr />
+				
+          <div>
+             <a name=".Voicemail"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Service.Voicemail.html">OX.Service.Voicemail</a>)</span> OX.Connection.<b>Voicemail</b></h3>
+					</div>
+					<div class="description">
+						A usable instance of the Voicemail service.
+					</div><br/>
+					
+					
+
+						
+						
+						
+						
+
+						
+						
+
+
+					
+				
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<h1 class="title">Method Detail</h1>
+				
+					<a name="getJID"> </a>
+          <div>
+             <a name="getJID"> </a>
+             <h3><span class="light">(String)</span> <b>getJID</b>()</h3>
+
+             <div class="description">
+               
+  				       <dt>Returns the JID of this connection.</dd><br/>
+               
+						   
+             </div>
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(String)</span> This connection's JID.</dt>
+							
+							</dl>
+						
+						
+
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dt><a href="../symbols/OX.ConnectionAdapter.html#jid">OX.ConnectionAdapter#jid</a></dt>
+							
+							</dl>
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;ox.getJID();<br/>&nbsp;&nbsp;<span class="single-line-comment">//</span>&nbsp;-&gt;&nbsp;"mock@example.com/some-resource-identifier"</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="registerJIDHandler"> </a>
+          <div>
+             <a name="registerJIDHandler"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Connection.html">OX.Connection</a>)</span> <b>registerJIDHandler</b>(jid, handler, target)</h3>
+
+             <div class="description">
+               
+  				       <dt>Registers a message event handler for a JID. Only one
+handler is active at a time per JID.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>jid</b>
+									
+								</dt>
+								<dd>The jid who's events we listen to.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>handler</b>
+									
+								</dt>
+								<dd>Function of one argument: the message packet received.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>target</b>
+									<i>Optional</i>
+								</dt>
+								<dd>The optional target to associate 'this' with.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(<a href="../symbols/OX.Connection.html">OX.Connection</a>)</span> The receiver.</dt>
+							
+							</dl>
+						
+						
+
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dt><a href="../symbols/OX.Connection.html#registerJIDHandler">OX.Connection#registerJIDHandler</a></dt>
+							
+								<dt><a href="../symbols/OX.ConnectionAdapter.html#registerHandler">OX.ConnectionAdapter#registerHandler</a></dt>
+							
+							</dl>
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;ox&nbsp;=&nbsp;OX.Connection.extend({&nbsp;connectionAdapter:&nbsp;bosh&nbsp;});<br/>&nbsp;&nbsp;ox.registerJIDHandler(<span class="string">'pubsub.active-calls.xmpp.onsip.com'</span>,&nbsp;<span class="keyword">function</span>&nbsp;(packet)&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>&nbsp;&nbsp;});</code></p>
+					
+					
+				 
+					
+					<hr />
+				
+					<a name="send"> </a>
+          <div>
+             <a name="send"> </a>
+             <h3><span class="light">(void)</span> <b>send</b>(xml, callback, args)</h3>
+
+             <div class="description">
+               
+  				       <dt>Sends an XML string to the connection adapter.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>xml</b>
+									
+								</dt>
+								<dd>The XML String to send.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/Function.html">Function</a>)</span> <b>callback</b>
+									
+								</dt>
+								<dd>Called when a response to this packet is received with the first argument being the received packet.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(Array)</span> <b>args</b>
+									<i>Optional</i>
+								</dt>
+								<dd>An array of arguments to be passed to callback after the packet.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(void)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dt><a href="../symbols/OX.ConnectionAdapter.html#send">OX.ConnectionAdapter#send</a></dt>
+							
+							</dl>
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="unregisterJIDHandler"> </a>
+          <div>
+             <a name="unregisterJIDHandler"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.Connection.html">OX.Connection</a>)</span> <b>unregisterJIDHandler</b>(jid)</h3>
+
+             <div class="description">
+               
+  				       <dt>Unregister the handler, if any, for a JID.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>jid</b>
+									
+								</dt>
+								<dd>The jid who's events we listen to.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(<a href="../symbols/OX.Connection.html">OX.Connection</a>)</span> The receiver.</dt>
+							
+							</dl>
+						
+						
+
+						
+							<dl class="detailList">
+							<dt class="heading">See:</dt>
+							
+								<dt><a href="../symbols/OX.Connection.html#unregisterJIDHandler">OX.Connection#unregisterJIDHandler</a></dt>
+							
+								<dt><a href="../symbols/OX.ConnectionAdapter.html#unregisterHandler">OX.ConnectionAdapter#unregisterHandler</a></dt>
+							
+							</dl>
+						
+					
+
+					</div>
+					
+					
+					<p class="code"><code>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;ox&nbsp;=&nbsp;OX.Connection.extend({&nbsp;connectionAdapter:&nbsp;bosh&nbsp;});<br/>&nbsp;&nbsp;ox.unregisterJIDHandler(<span class="string">'pubsub.active-calls.xmpp.onsip.com'</span>);</code></p>
+					
+					
+				 
+					
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+		
+      <!-- ============================== footer ================================= -->
+  		<div class="fineprint" style="clear:both">
+		  	
+	  		Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.1.0 on Fri Feb 10 2012 12:58:58 GMT-0500 (EST)
+  		</div>
+		</div>
+	</body>
+</html>

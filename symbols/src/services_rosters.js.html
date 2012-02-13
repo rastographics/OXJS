@@ -1,0 +1,76 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @namespace
+<span class='line'>  3</span>  * &lt;p>Namespace for roster related services.&lt;/p>
+<span class='line'>  4</span>  * &lt;p>This service provides a way to request a Roster Item Exchange
+<span class='line'>  5</span>  * that advises an XMPP Client what to do with the user's Roster
+<span class='line'>  6</span>  * (adding, modifying, and deleting entities).&lt;/p>
+<span class='line'>  7</span>  * @extends OX.Base
+<span class='line'>  8</span>  * @requires A 'connectionAdapter' property inherited from an {@link OX.Connection}.
+<span class='line'>  9</span>  * @see &lt;a href="http://wiki.onsip.com/docs/Rosters_Component">Rosters Component&lt;/a>
+<span class='line'> 10</span>  * @see &lt;a href="http://xmpp.org/extensions/xep-0144.html">XEP-0144: Roster Item Exchange&lt;/a>
+<span class='line'> 11</span>  */</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="NAME">OX.Service.Rosters</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">OX.Base.extend</span><span class="PUNC">(</span><span class="NAME">OX.Mixin.Subscribable</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/** @lends OX.Service.Rosters */</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 14</span>    * Push a roster group from the Junction Networks XMPP API Rosters Component.
+<span class='line'> 15</span>    * The first time this is called, a user will receive a series of roster add requests for
+<span class='line'> 16</span>    * every user in his organization. The next time he requests roster information he will only
+<span class='line'> 17</span>    * receive deltas; that is, add requests of any new users since his last request,
+<span class='line'> 18</span>    * modify requests for any user's who have changed contact information, and
+<span class='line'> 19</span>    * delete requests for any users who may have been deleted.
+<span class='line'> 20</span>    *
+<span class='line'> 21</span>    * @param {Object} [callbacks] Callbacks with 'onSuccess' and 'onError'
+<span class='line'> 22</span>    *   @param {Function} [callbacks.onSuccess] The success callback
+<span class='line'> 23</span>    *     @param {OX.PacketAdapter} [callbacks.onSuccess.packet] The packet recieved.
+<span class='line'> 24</span>    *   @param {Function} [callbacks.onError] The error callback
+<span class='line'> 25</span>    *     @param {OX.PacketAdapter} [callbacks.onError.packet] The packet recieved.
+<span class='line'> 26</span>    * @param {Object} [options]
+<span class='line'> 27</span>    *   @param {String} options.jid The full JID to push roster groups to; if not provided, the JID in the IQ 'from' attribute will be assumed.
+<span class='line'> 28</span>    * @returns {void}
+<span class='line'> 29</span>    *
+<span class='line'> 30</span>    * @example
+<span class='line'> 31</span>    * ox.Rosters.pushRosterGroups({
+<span class='line'> 32</span>    *   onSuccess: function () {},
+<span class='line'> 33</span>    *   onError:   function (error) {}
+<span class='line'> 34</span>    * }, { jid: 'jid@example.com' });
+<span class='line'> 35</span>    */</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">  </span><span class="NAME">pushRosterGroups</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">callbacks</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">options</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">iq</span><span class="WHIT">    </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">OX.XML.XMPP.IQ.extend</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">        </span><span class="NAME">cmd</span><span class="WHIT">   </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">OX.XML.XMPP.Command.extend</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">        </span><span class="NAME">xData</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">OX.XML.XMPP.XDataForm.extend</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">        </span><span class="NAME">uri</span><span class="WHIT">   </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">OX.Settings.URIs.command.pushRosterGroups</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">        </span><span class="NAME">jid</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> 
+<span class='line'> 43</span> </span><span class="WHIT">    </span><span class="NAME">callbacks</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">callbacks</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">    </span><span class="NAME">jid</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">options</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">options.jid</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="NAME">iq.to</span><span class="PUNC">(</span><span class="NAME">uri.path</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">    </span><span class="NAME">iq.type</span><span class="PUNC">(</span><span class="STRN">'set'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">    </span><span class="NAME">cmd.node</span><span class="PUNC">(</span><span class="NAME">uri.queryParam</span><span class="PUNC">(</span><span class="STRN">'node'</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="NAME">xData.type</span><span class="PUNC">(</span><span class="STRN">'submit'</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">jid</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">      </span><span class="NAME">xData.addField</span><span class="PUNC">(</span><span class="STRN">'jid'</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">jid</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 53</span> 
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="NAME">iq.addChild</span><span class="PUNC">(</span><span class="NAME">cmd.addChild</span><span class="PUNC">(</span><span class="NAME">xData</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> 
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="NAME">this.connection.send</span><span class="PUNC">(</span><span class="NAME">iq.toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">packet</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">packet</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">      </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">packet.getType</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'error'</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">callbacks.onError</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">        </span><span class="NAME">callbacks.onError</span><span class="PUNC">(</span><span class="NAME">packet</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">callbacks.onSuccess</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">        </span><span class="NAME">callbacks.onSuccess</span><span class="PUNC">(</span><span class="NAME">packet</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">      </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span></pre></body></html>

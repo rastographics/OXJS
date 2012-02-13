@@ -1,0 +1,115 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/**
+<span class='line'>  2</span>  * @namespace
+<span class='line'>  3</span>  * &lt;p>The core namespace for OX. OX is the official OnSIP XMPP-API JavaScript Library.&lt;/p>
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * &lt;p>For documentation concerning the OnSIP XMPP-API itself,
+<span class='line'>  6</span>  * visit the &lt;a href="http://wiki.onsip.com/docs/XMPP_API">wiki&lt;/a>.&lt;/p>
+<span class='line'>  7</span>  * @version 2.0.1
+<span class='line'>  8</span>  */</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">OX</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 10</span> 
+<span class='line'> 11</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 12</span>    * The version number for OX using &lt;a href="http://semver.org">Semantic Versioning&lt;/a>.
+<span class='line'> 13</span>    * @type String
+<span class='line'> 14</span>    */</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">  </span><span class="NAME">VERSION</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="STRN">'2.1.1'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 16</span> 
+<span class='line'> 17</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 18</span>    * Prints a debug message to the console, if window.console exists.
+<span class='line'> 19</span>    * @returns {void}
+<span class='line'> 20</span>    */</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">  </span><span class="NAME">debug</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.debug</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.debug.apply</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.debug.apply</span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 26</span>    * Prints a log to the console, if window.console exists.
+<span class='line'> 27</span>    * @returns {void}
+<span class='line'> 28</span>    */</span><span class="WHIT">
+<span class='line'> 29</span> </span><span class="WHIT">  </span><span class="NAME">log</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.log</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.log.apply</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.log.apply</span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 34</span>    * Prints a warning to the console, if window.console exists.
+<span class='line'> 35</span>    * @returns {void}
+<span class='line'> 36</span>    */</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">  </span><span class="NAME">warn</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.warn</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.warn.apply</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.warn.apply</span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 40</span> 
+<span class='line'> 41</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 42</span>    * Prints an error to the console, if window.console exists.
+<span class='line'> 43</span>    * @returns {void}
+<span class='line'> 44</span>    */</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">  </span><span class="NAME">error</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.error</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.error.apply</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.error.apply</span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 48</span> 
+<span class='line'> 49</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 50</span>    * Begins a console group, if it's able to; otherwise it tries to print a log.
+<span class='line'> 51</span>    * @returns {void}
+<span class='line'> 52</span>    */</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">  </span><span class="NAME">group</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.group</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">      </span><span class="NAME">window.console.group.apply</span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">      </span><span class="NAME">OX.log.apply</span><span class="PUNC">(</span><span class="NAME">OX</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">arguments</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> 
+<span class='line'> 61</span> </span><span class="WHIT">  </span><span class="COMM">/**
+<span class='line'> 62</span>    * End a console group.
+<span class='line'> 63</span>    * @returns {void}
+<span class='line'> 64</span>    */</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">  </span><span class="NAME">groupEnd</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">    </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">window.console</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">window.console.groupEnd</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">      </span><span class="NAME">window.console.groupEnd</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> 
+<span class='line'> 73</span> </span><span class="COMM">/**
+<span class='line'> 74</span>  * @namespace
+<span class='line'> 75</span>  * &lt;p>Namespace for service mixins.&lt;/p>
+<span class='line'> 76</span>  * &lt;p>These objects should not be used directly, but only when
+<span class='line'> 77</span>  * instantiated from an {@link OX.Connection}.&lt;/p>
+<span class='line'> 78</span>  * &lt;p>To do actions on a given OnSIP PubSub Service, use {@link OX.Mixin.Subscribable}
+<span class='line'> 79</span>  * methods to subscribe, unsubscribe, and get the items the service
+<span class='line'> 80</span>  * provides if it's a PubSub service. PubSub services include:&lt;/p>
+<span class='line'> 81</span>  * &lt;ul>
+<span class='line'> 82</span>  *   &lt;li>{@link OX.Service.ActiveCalls}&lt;/li>
+<span class='line'> 83</span>  *   &lt;li>{@link OX.Service.Directories}&lt;/li>
+<span class='line'> 84</span>  *   &lt;li>{@link OX.Service.UserAgents}&lt;/li>
+<span class='line'> 85</span>  *   &lt;li>{@link OX.Service.Voicemail}&lt;/li>
+<span class='line'> 86</span>  * &lt;/ul>
+<span class='line'> 87</span>  *
+<span class='line'> 88</span>  * &lt;p>For OnSIP Component services, there are calls on the Service
+<span class='line'> 89</span>  * for using the Ad-Hoc commands. Component services include:
+<span class='line'> 90</span>  * &lt;ul>
+<span class='line'> 91</span>  *   &lt;li>{@link OX.Service.ActiveCalls}&lt;/li>
+<span class='line'> 92</span>  *   &lt;li>{@link OX.Service.Auth}&lt;/li>
+<span class='line'> 93</span>  *   &lt;li>{@link OX.Service.Rosters}.&lt;/li>
+<span class='line'> 94</span>  * &lt;/ul>
+<span class='line'> 95</span>  *
+<span class='line'> 96</span>  * &lt;p>For more information about the OnSIP XMPP API services, take a look
+<span class='line'> 97</span>  * at the developer documentation.&lt;/p>
+<span class='line'> 98</span>  * @see OX.Connection
+<span class='line'> 99</span>  * @see &lt;a href="http://wiki.onsip.com/docs/XMPP_API">OnSIP XMPP API Developer Documentation&lt;/a>
+<span class='line'>100</span>  */</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="NAME">OX.Service</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> 
+<span class='line'>103</span> </span><span class="COMM">/**
+<span class='line'>104</span>  * @namespace
+<span class='line'>105</span>  * Mixins namespace.
+<span class='line'>106</span>  */</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="NAME">OX.Mixin</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span></pre></body></html>

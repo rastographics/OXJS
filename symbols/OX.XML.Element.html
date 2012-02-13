@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="generator" content="JsDoc Toolkit" />
+
+	<title>JsDoc Reference - OX.XML.Element</title>
+	
+  <link rel="stylesheet" type="text/css" href="../static/default.css"></link>
+  <link rel="stylesheet" type="text/css" href="../static/doc.css"></link>
+</head>
+
+<body class="doc">
+  <div id="header">
+  <h1><a href="../">OXJS</a></h1>
+  <span class="caption">OnSIP XMPP-API JavaScript SDK</span>
+</div>
+
+  <div id="module">
+		<h1>
+				
+		  Class OX.XML.Element
+    </h1>
+    
+      <span class="src"><a href="../symbols/src/xml.js.html">xml.js</a></span>
+    
+  </div>
+	<div id="index">
+		<span class="banner">Class Index<img class="handle" src="../static/dot.gif" onmousedown="beginResize()" /></span>
+<span class="class-list"><ul><li><a href="../symbols/Function.html">Function</a></li><li><a href="../symbols/OX.html">OX</a></li><ul><li><a href="../symbols/OX.Base.html">Base</a></li><li><a href="../symbols/OX.Connection.html">Connection</a></li><li><a href="../symbols/OX.ConnectionAdapter.html">ConnectionAdapter</a></li><li><a href="../symbols/OX.Error.html">Error</a></li><li><a href="../symbols/OX.Item.html">Item</a></li><li><a href="../symbols/OX.Mixin.html">Mixin</a></li><ul><li><a href="../symbols/OX.Mixin.CallDialog.html">CallDialog</a></li><li><a href="../symbols/OX.Mixin.EntityTime.html">EntityTime</a></li><li><a href="../symbols/OX.Mixin.Subscribable.html">Subscribable</a></li></ul><li><a href="../symbols/OX.PacketAdapter.html">PacketAdapter</a></li><li><a href="../symbols/OX.Service.html">Service</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.html">ActiveCalls</a></li><ul><li><a href="../symbols/OX.Service.ActiveCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Auth.html">Auth</a></li><li><a href="../symbols/OX.Service.Directories.html">Directories</a></li><ul><li><a href="../symbols/OX.Service.Directories.AliasItem.html">AliasItem</a></li><li><a href="../symbols/OX.Service.Directories.EntityItem.html">EntityItem</a></li><li><a href="../symbols/OX.Service.Directories.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Preferences.html">Preferences</a></li><li><a href="../symbols/OX.Service.RecentCalls.html">RecentCalls</a></li><ul><li><a href="../symbols/OX.Service.RecentCalls.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Rosters.html">Rosters</a></li><li><a href="../symbols/OX.Service.UserAgents.html">UserAgents</a></li><ul><li><a href="../symbols/OX.Service.UserAgents.Item.html">Item</a></li></ul><li><a href="../symbols/OX.Service.Voicemail.html">Voicemail</a></li><ul><li><a href="../symbols/OX.Service.Voicemail.Item.html">Item</a></li><li><a href="../symbols/OX.Service.Voicemail.LabelItem.html">LabelItem</a></li></ul></ul><li><a href="../symbols/OX.Settings.html">Settings</a></li><ul><li><a href="../symbols/OX.Settings.URIs.html">URIs</a></li><ul><li><a href="../symbols/OX.Settings.URIs.command.html">command</a></li><li><a href="../symbols/OX.Settings.URIs.entity.html">entity</a></li><li><a href="../symbols/OX.Settings.URIs.presence.html">presence</a></li><li><a href="../symbols/OX.Settings.URIs.pubSub.html">pubSub</a></li></ul></ul><li><a href="../symbols/OX.StropheAdapter.html">StropheAdapter</a></li><li><a href="../symbols/OX.Subscription.html">Subscription</a></li><li><a href="../symbols/OX.URI.html">URI</a></li><ul><li><a href="../symbols/OX.URI.Base.html">Base</a></li></ul><li><a href="../symbols/OX.XML.html">XML</a></li><ul><li><a href="../symbols/OX.XML.Element.html">Element</a></li><li><a href="../symbols/OX.XML.XMPP.html">XMPP</a></li><ul><li><a href="../symbols/OX.XML.XMPP.Command.html">Command</a></li><li><a href="../symbols/OX.XML.XMPP.IQ.html">IQ</a></li><li><a href="../symbols/OX.XML.XMPP.Message.html">Message</a></li><li><a href="../symbols/OX.XML.XMPP.PubSub.html">PubSub</a></li><li><a href="../symbols/OX.XML.XMPP.Stanza.html">Stanza</a></li><li><a href="../symbols/OX.XML.XMPP.XDataForm.html">XDataForm</a></li></ul></span>
+<script type="text/javascript">
+function beginResize(e) {
+  document.addEventListener('mousemove', resize, true);
+  document.addEventListener('mouseup', endResize, true);
+}
+
+function resize(e) {
+  var index = document.getElementById('index'),
+      content = document.getElementById('content'),
+      x = (e.pageX || e.clientX) + 7;
+
+  if (x <= 225) {
+    x = 225;
+  } else if (x >= 400) {
+    x = 400;
+  }
+  index.setAttribute('style', 'width: ' + x + "px");
+  content.setAttribute('style', 'left: ' + x + "px");
+
+  e.returnValue = false;
+  return false;
+}
+
+function endResize(e) {
+  document.removeEventListener('mousemove', resize, true);
+}
+</script>
+
+	</div>
+  <div id="content">
+
+<!-- ============================== class summary ========================== -->
+    
+      <h1 class="title">Overview</h1>
+      
+			<p class="description">
+				A simple XML element class.
+			</p>
+      
+      
+				<dl class="detailList">
+				<dt class="heading">Extends:</dt>
+				
+				<dt><a href="../symbols/OX.Base.html">OX.Base</a></dt>
+				
+				</dl>
+      
+			
+      
+			
+			
+			
+			<p class="code"><code>&nbsp;&nbsp;<span class="keyword">var</span>&nbsp;newElement&nbsp;=&nbsp;OX.XML.Element.extend({name:&nbsp;<span class="string">'foo'</span>});<br/>&nbsp;&nbsp;newElement.attr(<span class="string">'bar'</span>,&nbsp;<span class="string">'bam'</span>);<br/>&nbsp;&nbsp;newElement.addChild(OX.XML.Element.extend({name:&nbsp;<span class="string">'child'</span>}));<br/>&nbsp;&nbsp;newElement.toString();<br/>&nbsp;&nbsp;<span class="single-line-comment">//</span>&nbsp;-&gt;&nbsp;'&lt;foo&nbsp;bar="bam"&gt;&lt;child&gt;&lt;/child&gt;&lt;/foo&gt;'</code></p>
+			
+			
+			
+    
+
+
+<!-- ============================== constructor summary ====================
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class OX.XML.Element.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/OX.XML.Element.html">OX.XML.Element</a></b>()
+							</div>
+							<div class="description"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			-->
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+        <h1 class="title">Method Summary</h1>
+        
+				
+          <table>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.XML.Element.html#addChild">addChild</a></b>(child)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.XML.Element.html#attr">attr</a></b>(name, value)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.XML.Element.html#.create">create</a></b>(attrs, elements)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.XML.Element.html#escapeXML">escapeXML</a></b>(string)</td>
+            </tr>
+					
+						<tr class="nameDescription">
+              <td><span class="fixedFont">
+              + <b><a href="../symbols/OX.XML.Element.html#toString">toString</a></b>()</td>
+            </tr>
+					
+          </table>
+				
+				
+				
+				<dl class="inheritsList">
+				
+				</dl>
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<h1 class="title">Method Detail</h1>
+				
+					<a name="addChild"> </a>
+          <div>
+             <a name="addChild"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.XML.Element.html">OX.XML.Element</a>)</span> <b>addChild</b>(child)</h3>
+
+             <div class="description">
+               
+  				       <dt>Add a XML child element to the receiver.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.XML.Element.html">OX.XML.Element</a>)</span> <b>child</b>
+									
+								</dt>
+								<dd>The XML element to add as a child.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(<a href="../symbols/OX.XML.Element.html">OX.XML.Element</a>)</span> The receiver.</dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="attr"> </a>
+          <div>
+             <a name="attr"> </a>
+             <h3><span class="light">(String)</span> <b>attr</b>(name, value)</h3>
+
+             <div class="description">
+               
+  				       <dt>Get or set attributes on the receiver.</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>name</b>
+									
+								</dt>
+								<dd>The attributes name.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>value</b>
+									<i>Optional</i>
+								</dt>
+								<dd>If value is supplied, the attribute will be set.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(String)</span> the value of the attribute.</dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name=".create"> </a>
+          <div>
+             <a name=".create"> </a>
+             <h3><span class="light">(<a href="../symbols/OX.XML.Element.html">OX.XML.Element</a>)</span> OX.XML.Element.<b>create</b>(attrs, elements)</h3>
+
+             <div class="description">
+               
+  				       <dt>Convenience function for creating a new OX.XML.Element and
+setting attrs and elements in a single function</dd><br/>
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(Object)</span> <b>attrs</b>
+									<i>Optional</i>
+								</dt>
+								<dd>A hash of attribute names to attribute values.</dd>
+							
+								<dt>
+									<span class="light fixedFont">(<a href="../symbols/OX.XML.Element.html">OX.XML.Element</a>[])</span> <b>elements</b>
+									<i>Optional</i>
+								</dt>
+								<dd>An array of OX.XML.Element to assign as children.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(<a href="../symbols/OX.XML.Element.html">OX.XML.Element</a>)</span> </dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="escapeXML"> </a>
+          <div>
+             <a name="escapeXML"> </a>
+             <h3><span class="light">(String)</span> <b>escapeXML</b>(string)</h3>
+
+             <div class="description">
+               
+						   
+             </div>
+
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">(String)</span> <b>string</b>
+									
+								</dt>
+								<dd>The string to escape.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(String)</span> The escaped string.</dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					<hr />
+				
+					<a name="toString"> </a>
+          <div>
+             <a name="toString"> </a>
+             <h3><span class="light">(String)</span> <b>toString</b>()</h3>
+
+             <div class="description">
+               
+  				       <dt>Return an XML string representation of this element.</dd><br/>
+               
+						   
+             </div>
+
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dt><span class="light fixedFont">(String)</span> This XML element as XML text.</dt>
+							
+							</dl>
+						
+						
+
+						
+					
+
+					</div>
+					
+				 
+					
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+		
+      <!-- ============================== footer ================================= -->
+  		<div class="fineprint" style="clear:both">
+		  	
+	  		Documentation generated by <a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a> 2.1.0 on Fri Feb 10 2012 12:58:59 GMT-0500 (EST)
+  		</div>
+		</div>
+	</body>
+</html>
